@@ -1,0 +1,158 @@
+@import 'config-styles/reset';
+@import 'config-styles/vars';
+@import 'config-styles/fonts';
+
+body {
+  position: relative;
+  background-color: $default-bg-color;
+}
+
+body, input, textarea, select, button, option {
+  font-family: $default-font-family, 'system-ui';
+}
+
+#root {
+  position: relative;
+  overflow: hidden; // If need to use 'position: sticky' - set 'overflow: clip'
+  color: $default-text-color;
+  font-weight: $default-font-weight;
+}
+
+.selectedColor {
+  color: $selected-color !important;
+}
+
+.socialIcon {
+  width: 60px;
+  height: 60px;
+
+  cursor: pointer;
+
+  svg {
+    path {
+      transition: fill 0.3s;
+    }
+  }
+
+  &:hover {
+    #facebook {
+      path {
+        fill: $facebook-hover-color;
+      }
+    }
+    #instagram {
+      path {
+        fill: $instagram-hover-color;
+      }
+    }
+    #whatsapp {
+      path {
+        fill: $whatsapp-hover-color;
+      }
+    }
+  }
+}
+
+/*.PhoneInput {
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 30px;
+  max-height: 47px;
+
+  background: #fff;
+}
+
+.PhoneInputCountryIconUnicode {
+  font-size: 24px;
+  color: #101828;
+
+  margin-bottom: 5px;
+}
+
+.PhoneInputCountrySelectArrow {
+  width: 10px !important;
+  height: 10px !important;
+
+  margin-left: 6px !important;
+  margin-bottom: 5px !important;
+
+  color: #667085;
+  border-bottom-width: 2px !important;
+  border-right-width: 2px !important;
+}
+
+.PhoneInputInput {
+  border: none;
+}*/
+
+.label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 143%;
+
+  margin-bottom: 6px;
+}
+
+.error {
+  color: #ff4d4f;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 64px;
+  text-transform: uppercase;
+
+  @media (max-width: $laptop-l-width) {
+    font-size: 48px;
+  }
+}
+
+.smallerTitle {
+  font-weight: 700;
+  font-size: 46px;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+
+.imageLoaded {
+  opacity: 1 !important;
+}
+
+img {
+  transition: opacity 1s !important;
+}
+
+.iconBorder {
+  position: relative;
+
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #2744F0;
+  border-radius: 50%;
+
+  &::before {
+    @include location-icon-border(60px, #A2B9CF);
+  }
+
+  &::after {
+    @include location-icon-border(50px, #A9C3FA);
+  }
+}
+
+.bgObject {
+  position: absolute;
+  z-index: -10;
+  user-select: none;
+}

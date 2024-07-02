@@ -1,0 +1,46 @@
+@import "../../../assets/styles/scss/config-styles/vars";
+
+.sliderBtn {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $selected-color;
+
+  border-radius: 22px;
+  border: none;
+
+  cursor: pointer;
+
+  transition: opacity 0.3s, transform 0.1s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:active {
+    transform: translateY(2px);
+  }
+}
+
+.prev {
+  svg {
+    rotate: 180deg;
+  }
+}
+
+.inactive {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.2);
+
+  &:active {
+    transform: none;
+  }
+
+  svg {
+    opacity: 0.3;
+  }
+}

@@ -1,0 +1,65 @@
+@import "../../../assets/styles/scss/config-styles/vars";
+
+.home {
+  @include main-container;
+
+  .flexContainer {
+    display: flex;
+    justify-content: space-between;
+
+    .butterfly {
+      position: relative;
+      width: 80%;
+      scale: 0.95;
+
+      opacity: 0.2;
+
+      .antiBanner {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 200px;
+        height: 100px;
+
+        background-color: $default-bg-color;
+      }
+    }
+
+    .textContainer {
+      margin-top: 60px;
+
+      .button {
+        width: 280px;
+        height: 60px;
+      }
+
+      .bigText {
+        font-weight: 800;
+        font-size: 128px;
+        letter-spacing: -0.06em;
+        text-transform: uppercase;
+      }
+
+      .smallText {
+        font-weight: 800;
+        font-size: 64px;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+      }
+
+      .row {
+        display: flex;
+        align-items: center;
+        column-gap: 32px;
+      }
+    }
+
+    .description {
+      max-width: 600px;
+      margin-top: 80px;
+
+      font-size: 24px;
+      text-align: right;
+    }
+  }
+}

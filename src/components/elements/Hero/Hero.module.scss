@@ -1,0 +1,15 @@
+@import "../../../assets/styles/scss/config-styles/vars";
+
+.heroWrapper {
+  position: relative;
+
+  @include centered-container;
+
+  .hero {
+    width: calc(100% - $page-padding - $aside-socials-width);
+
+    position: absolute;
+    left: $aside-socials-width;
+    top: $header-height;
+  }
+}

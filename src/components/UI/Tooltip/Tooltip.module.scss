@@ -1,0 +1,49 @@
+@import "../../../assets/styles/scss/config-styles/vars";
+
+.tooltip {
+  position: absolute;
+  top: 145%;
+  left: 2px;
+
+  width: 400px;
+  padding: 12px;
+
+  background-color: $selected-color;
+  border-radius: 8px;
+  z-index: 10;
+
+  color: white;
+  font-size: 16px;
+  line-height: 150%;
+
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+
+  transition: opacity 0.3s, transform 0.3s;
+
+  .content {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+
+      width: 10px;
+      height: 0;
+
+      border: 10px solid transparent;
+      border-bottom-color: #2844F3;
+      border-top: none;
+
+      z-index: 10;
+    }
+  }
+}
+
+.active {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}

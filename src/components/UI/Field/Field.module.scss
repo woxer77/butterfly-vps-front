@@ -1,0 +1,49 @@
+.field {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  .input {
+    position: relative;
+
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 30px;
+
+    background: #fff;
+
+    max-height: 47px;
+  }
+
+  .textarea {
+    min-height: 150px;
+
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 30px;
+
+    background: #fff;
+
+    resize: none;
+  }
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+
+  position: absolute;
+  right: 15px;
+  top: 47%;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  path {
+    fill: grey;
+  }
+}

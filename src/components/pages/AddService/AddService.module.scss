@@ -1,0 +1,123 @@
+@import "../../../assets/styles/scss/config-styles/vars";
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+  max-height: 200px;
+  width: 600px;
+}
+
+.adminField {
+  width: 100%;
+}
+
+.feedbackText {
+  width: 800px;
+  max-height: 300px;
+  resize: vertical;
+}
+
+.images {
+  width: 800px;
+  height: 200px;
+
+  margin-top: 100px !important;
+  margin-bottom: 50px !important;
+  gap: 0 !important;
+
+  button {
+    width: 100%;
+    height: 100%;
+
+    font-size: 24px;
+  }
+}
+
+.worksImages {
+  margin-top: 100px !important;
+  margin-bottom: 50px !important;
+
+  display: block !important;
+
+  button {
+    margin: 10px 0;
+  }
+
+  .worksImagesPlace {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+
+    .workImagePlace {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+
+      background-color: #dedede;
+
+      .workPreviewImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.feedback {
+  padding-bottom: 50px;
+}
+
+.form {
+  padding-bottom: 50px;
+}
+
+.fieldFullWidth {
+  width: 800px;
+}
+
+.selectImage {
+  height: auto !important;
+  border-radius: 0 !important;
+  margin-left: 30px;
+  position: relative;
+
+  p {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  button {
+    margin-bottom: 10px;
+  }
+
+  .imagePlace {
+    width: 736px !important;
+    height: 478px !important;
+
+    background-color: #dedede;
+    border-radius: 20px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  /*button {
+    width: 100%;
+    height: 100%;
+
+    font-size: 24px;
+  }*/
+}
+
+.addServiceButton {
+  width: 800px;
+  margin: 0 auto;
+}

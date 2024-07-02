@@ -1,0 +1,57 @@
+.equipmentElements {
+  position: absolute;
+
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 40px;
+
+  z-index: 5;
+
+  .equipmentElement {
+    width: 425px;
+    height: 100%;
+    padding: 20px 0;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+    border: 1px solid #FFFFFF50;
+    border-radius: 20px;
+    background-color: transparent;
+
+    cursor: pointer;
+    user-select: none;
+
+    transition: border 0.2s;
+
+    &:hover {
+      border: 1px solid #FFFFFF;
+    }
+
+    .smallImage {
+      width: 80px;
+      height: 42px;
+    }
+
+    .title {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 140%;
+      text-align: center;
+
+      transition: color 0.3s;
+    }
+
+    .description {
+      font-size: 16px;
+      line-height: 162%;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+}

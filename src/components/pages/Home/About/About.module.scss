@@ -1,0 +1,90 @@
+@import "../../../../assets/styles/scss/config-styles/vars";
+
+.aboutWrapper {
+  width: 100%;
+  height: 1180px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  -webkit-box-shadow: inset 0 200px 100px 0 rgba(2, 13, 25, 1);
+  -moz-box-shadow: inset 0 200px 100px 0 rgba(2, 13, 25, 1);
+  box-shadow: inset 0 200px 100px 0 rgba(2, 13, 25, 1);
+  color: black;
+
+  .about {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    .infoContainer {
+      position: absolute;
+      right: 300px;
+      top: 200px;
+
+      width: 650px;
+      padding: 60px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 40px;
+
+      border-radius: 16px;
+      background: linear-gradient(144deg, #d1e9ff 0%, #d9d9d9 100%);
+
+      .title {
+        font-weight: 700;
+        font-size: 40px;
+      }
+
+      .description {
+        font-size: 16px;
+        line-height: 162%;
+      }
+
+      .button {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 150%;
+        text-transform: uppercase;
+      }
+
+      .companyInfo {
+        width: 100%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .infoBlock {
+          display: flex;
+          flex-direction: column;
+
+          .line {
+            width: 40px;
+            height: 4px;
+
+            background-color: $default-bg-color;
+
+            margin-bottom: 20px;
+          }
+
+          .number {
+            font-weight: 700;
+            font-size: 46px;
+            line-height: 120%;
+          }
+
+          .name {
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 160%;
+          }
+        }
+      }
+    }
+  }
+}

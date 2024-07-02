@@ -1,0 +1,159 @@
+@import "../../../../assets/styles/scss/config-styles/vars";
+
+.partners {
+  position: relative;
+
+  width: 100%;
+
+  .partnerships {
+    position: relative;
+
+    @include centered-container;
+    padding: $page-padding;
+
+    #bgObject {
+      top: -200px;
+      left: 0;
+
+      width: 1226px;
+      height: 876px;
+
+      opacity: 0.5;
+
+      @media screen and (max-width: $laptop-l-width) {
+        top: -250px;
+      }
+    }
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+
+      margin-top: 400px;
+
+      .left {
+        display: flex;
+        align-items: flex-end;
+        column-gap: 30px;
+
+        .text {
+          width: 584px;
+        }
+
+        .exploreBtn {
+          width: auto;
+
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          column-gap: 35px;
+
+          outline: none;
+
+          cursor: pointer;
+
+          transition: border-bottom 0.3s;
+
+          &:hover {
+            border-bottom: 1px solid $selected-color;
+
+            .exploreBtnText {
+              padding-bottom: 20px;
+
+              color: $selected-color;
+            }
+
+            .arrow {
+              rotate: 45deg;
+
+              path {
+                fill: $selected-color;
+              }
+            }
+          }
+
+          .exploreBtnText {
+            color: $default-text-color;
+            font-size: 32px;
+            text-transform: capitalize;
+
+            transition: padding-bottom 0.3s, color 0.3s;
+          }
+
+          .arrow {
+            width: 60px;
+            height: 60px;
+            padding-bottom: 20px;
+
+            transition: rotate 0.3s;
+
+            path {
+              transition: fill 0.3s;
+            }
+          }
+        }
+      }
+
+      .right {
+        width: 280px;
+
+        display: flex;
+        flex-direction: column;
+
+        .bigText {
+          font-weight: 700;
+          font-size: 100px;
+          line-height: 0.9;
+          text-transform: uppercase;
+          text-align: right;
+        }
+
+        .smallText {
+          font-weight: 500;
+          font-size: 40px;
+          text-align: center;
+          text-transform: lowercase;
+        }
+      }
+    }
+  }
+
+  .clients {
+    position: relative;
+
+    height: 300px;
+    margin-top: 200px;
+
+    .title {
+      margin-bottom: 120px;
+    }
+
+    .clientsCarousel {
+      position: absolute;
+
+      height: 80px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 100px;
+    }
+
+    .shadow {
+      position: absolute;
+      left: -60px;
+      bottom: 0;
+
+      width: calc(100% + $page-padding * 2);
+      height: 120px;
+
+      box-shadow: inset -100px 0px 50px 5px $default-bg-color, inset 100px 0px 50px 5px $default-bg-color;
+
+      z-index: 10;
+    }
+  }
+}
+
+.center {
+  text-align: center;
+}

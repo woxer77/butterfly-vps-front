@@ -1,0 +1,105 @@
+@import "../../../../assets/styles/scss/config-styles/vars";
+
+.container {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+  @include centered-container;
+
+  .philosophy {
+    position: relative;
+
+    padding: 60px;
+
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+
+    #bgObject {
+      bottom: -340px;
+      left: -224px;
+
+      width: 900px;
+      height: 900px;
+    }
+
+    .textContent {
+      width: 550px;
+
+      .title {
+        margin-bottom: 40px;
+      }
+
+      .text {
+        font-size: 20px;
+        line-height: 140%;
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+
+    .believes {
+      width: 900px;
+      margin-bottom: 260px;
+      margin-left: 30px;
+
+      display: flex;
+      flex-direction: column;
+      row-gap: 50px;
+
+      .element {
+        display: flex;
+        align-items: center;
+        column-gap: 40px;
+
+        &:nth-child(2n) {
+          justify-content: flex-end;
+        }
+
+        .point {
+          padding: 30px 60px;
+
+          border: 1px solid white;
+          background-color: transparent;
+          border-radius: 20px;
+          font-size: 20px;
+        }
+
+        .explanation {
+          position: relative;
+
+          width: 50px;
+          height: 50px;
+          padding: 10px 20px;
+
+          border: 1px solid white;
+          background-color: transparent;
+          border-radius: 50%;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          cursor: pointer;
+          user-select: none;
+
+          transition: border-color 0.3s, background-color 0.3s;
+
+          &:hover {
+            border-color: $selected-color !important;
+          }
+        }
+      }
+    }
+  }
+
+  .fullSizeImage {
+    width: 100%;
+    height: 600px;
+  }
+}
+
+.explanationActive {
+  background-color: $selected-color;
+  border-color: $selected-color;
+}

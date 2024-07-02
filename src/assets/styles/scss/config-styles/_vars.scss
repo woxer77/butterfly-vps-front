@@ -1,0 +1,51 @@
+$default-bg-color: #020D19;
+$default-text-color: #F9F9F9;
+$default-font-weight: 400;
+$default-font-family: 'Eudoxus Sans';
+
+$facebook-hover-color: #337FFF;
+$instagram-hover-color: #ED5587;
+$whatsapp-hover-color: #00D95F;
+
+$selected-color: #2844F3;
+
+$aside-socials-width: 188px;
+$aside-socials-height: 1080px;
+$header-height: 146px;
+
+$full-hd-width: 1920px;
+$laptop-l-width: 1440px;
+$laptop-width: 1024px;
+$phone-large-width: 500px;
+
+$page-padding: 60px;
+
+$nav-margin-top: 72px;
+$side-menu-width: 340px;
+
+@mixin main-container {
+  width: 100%;
+  height: 100%;
+
+  @include centered-container;
+
+  overflow: hidden;
+}
+
+@mixin centered-container {
+  max-width: $full-hd-width;
+  margin: 0 auto;
+}
+
+@mixin location-icon-border($size: 50px, $color: #A2B9CF) {
+  position: absolute;
+  content: "";
+
+  min-width: $size;
+  min-height: $size;
+
+  background-color: $color;
+  border-radius: 50%;
+
+  z-index: -1;
+}

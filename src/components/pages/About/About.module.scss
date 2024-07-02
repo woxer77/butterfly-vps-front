@@ -1,0 +1,85 @@
+@import "../../../assets/styles/scss/config-styles/vars";
+
+.about {
+  width: 100%;
+  height: 100%;
+
+  .title {
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  .description {
+    font-size: 20px;
+    line-height: 120%;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+
+    margin-bottom: 160px;
+    margin-top: 20px;
+  }
+
+  .locationContent {
+    display: flex;
+    justify-content: space-around;
+
+    align-items: center;
+
+    .locations {
+      margin-right: 64px;
+      margin-left: 30px;
+
+      display: flex;
+      flex-direction: column;
+      row-gap: 48px;
+
+      .location {
+        max-width: 300px;
+
+        display: flex;
+        column-gap: 16px;
+
+        .iconBorder {
+          margin-right: 16px;
+        }
+
+        .information {
+          display: flex;
+          align-items: flex-start;
+          flex-direction: column;
+          row-gap: 8px;
+
+          .locationTitle {
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 140%;
+          }
+
+          .locationDescription {
+            margin-top: 8px;
+
+            font-size: 16px;
+            line-height: 162%;
+            color: rgba(255, 255, 255, 0.5);
+          }
+
+          .locationText {
+            margin-top: 15px;
+
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 150%;
+          }
+        }
+      }
+    }
+
+    .map {
+      iframe {
+        width: 800px;
+        height: 500px;
+      }
+    }
+  }
+}

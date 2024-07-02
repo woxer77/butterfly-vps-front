@@ -1,0 +1,33 @@
+@import 'src/assets/styles/scss/config-styles/vars';
+
+.glowArea {
+  height: 100%;
+  width: 100%;
+  max-width: 1920px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  z-index: -10;
+
+  .glowPanel {
+    position: sticky;
+    height: 100%;
+
+    .glow {
+      width: 100%;
+      height: 100%;
+      max-width: 800px;
+      max-height: 700px;
+
+      position: absolute;
+      left: 0;
+      top: -10%;
+
+      background: #2844F3;
+      filter: blur(250px);
+      opacity: 0.5;
+    }
+  }
+}

@@ -1,0 +1,136 @@
+@import "../../../assets/styles/scss/config-styles/vars";
+
+.sideMenu {
+  position: absolute;
+  top: 0;
+  left: -$side-menu-width;
+
+  width: $side-menu-width;
+  height: $aside-socials-height;
+
+  backdrop-filter: blur(60px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%);
+  border-radius: 0 10px 10px 0;
+
+  z-index: 10;
+
+  transition: opacity 0.3s, visibility 0.5s, left 0.5s;
+
+  .cross {
+    position: absolute;
+    top: 30px;
+    left: 16px;
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    &:hover {
+      .line {
+        background-color: #fff;
+      }
+    }
+
+    .line {
+      position: absolute;
+
+      width: 100%;
+      height: 2px;
+
+      background: rgba(255, 255, 255, 0.5);
+
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    #line1 {
+      transform: rotate(45deg);
+    }
+
+    #line2 {
+      transform: rotate(-45deg);
+    }
+  }
+
+  .nav {
+    height: calc(100% - $nav-margin-top * 2);
+    margin-top: $nav-margin-top;
+    margin-bottom: $nav-margin-top;
+    padding: 0 36px 36px 16px;
+
+    overflow-y: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      .service {
+        width: 100%;
+        padding: 12px 12px 12px 16px;
+        margin: 16px 0;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 20px;
+        line-height: 120%;
+        text-transform: uppercase;
+
+        outline: none;
+
+        cursor: pointer;
+
+        transition: color 0.3s;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+        &:hover {
+          color: white;
+          background: linear-gradient(90deg, #2844f3 0%, rgba(38, 112, 233, 0) 100%);
+
+          .icon {
+            path {
+              fill-opacity: 1;
+            }
+          }
+        }
+
+        .icon {
+          width: 32px;
+          height: 32px;
+          flex-shrink: 0;
+
+          path {
+            transition: fill-opacity 0.3s;
+          }
+        }
+      }
+
+      .line {
+        width: 100%;
+        height: 2px;
+
+        background: rgba(249, 249, 249, 0.2);
+
+        &:last-child {
+          display: none;
+        }
+      }
+    }
+  }
+}
