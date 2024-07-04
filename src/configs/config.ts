@@ -17,7 +17,7 @@ export const EQUIPMENT_TRANSITION_ANIMATION: number = 0.2;
 export const EMAIL: string = 'example@business.com';
 export const PHONE_NUMBER: string = '+971-58-608-5997';
 
-export const API_URL: string = DEVELOPMENT_STAGE === 'production' ? 'http://157.173.220.166/api' : 'http://localhost:2000';
+export const API_URL: string = DEVELOPMENT_STAGE === 'production' ? 'http://157.173.220.166/api' : 'http://localhost:2000/api';
 
 export const MAX_UPLOAD_IMAGE_SIZE: number = 4000000; // 4 MB
 export const FILE_TYPE_IMAGE: string = 'image.*';

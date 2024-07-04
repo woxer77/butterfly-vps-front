@@ -1,7 +1,6 @@
 {
   "name": "ts-react-app-template",
   "version": "0.1.0",
-  "homepage": ".",
   "type": "module",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",

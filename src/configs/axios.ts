@@ -1,6 +1,7 @@
 import axios from 'axios';
-// import { persistor } from 'redux/store';
 import { API_URL } from './config';
+import { store } from '../redux/store'; // Импортируем store
+import { resetAll } from '../redux/slices/adminSlice'; // Импортируем экшн resetAll
 
 const apiClient = axios.create({
   baseURL: API_URL,
@@ -24,7 +25,8 @@ apiClient.interceptors.response.use((config) => config, async (error) => {
     } catch (e) {
       console.log('Unauthorized!', e);
       localStorage.removeItem('token');
-      // await persistor.purge();
+      console.log('gg');
+      store.dispatch(resetAll()); // Обнуляем состояние adminReducer
     }
   }
   throw error;

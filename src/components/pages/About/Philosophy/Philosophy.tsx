@@ -27,7 +27,7 @@ const Philosophy: React.FC = () => {
       <div className={styles.philosophy}>
         <img className="bgObject" id={styles.bgObject} src={bgObjectSrc} alt="bg image philosophy"/>
         <div className={styles.textContent}>
-          <h1 className={`smallTitle ${styles.title}`}>Our Printing Philosophy</h1>
+          <h1 className={`smallerTitle ${styles.title}`}>Our Printing Philosophy</h1>
           <p className={styles.text}>
             Discover Our Mission At Butterfly, we are dedicated to revolutionizing printing with our commitment to
             quality, innovation, and sustainability. Explore our Goals & Beliefs to learn how we prioritize customer
