@@ -1,6 +1,6 @@
-export const validationRulesMinMax = (minLengthValue: number, maxLengthValue: number) => {
+export const validationRulesMinMax = (minLengthValue: number, maxLengthValue: number, required: boolean = true) => {
   return {
-    required: 'Required field',
+    required: required ? 'Required field' : false,
     maxLength: {
       value: maxLengthValue,
       message: `Maximum ${maxLengthValue} characters`

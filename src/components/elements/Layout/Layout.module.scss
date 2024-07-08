@@ -1,0 +1,8 @@
+@import "../../../assets/styles/scss/config-styles/vars";
+
+.layout {
+  position: relative;
+  width: 100%;
+
+  @include centered-container;
+}

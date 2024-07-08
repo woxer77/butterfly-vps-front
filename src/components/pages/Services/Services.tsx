@@ -42,75 +42,71 @@ const Services: React.FC<ServicesProps> = ({ service, servicesId, serviceId }) =
 
   return (
     <div className={styles.services}>
-      <Hero>
-        <div className={styles.content}>
-          <img className="bgObject" id={styles.bgObject} src={bgImage} alt="services-bg-image"/>
-          <Glow customClassName={styles.glow}/>
-          {isAuth &&
-            <div className={styles.adminButtonContainer}>
-              <Button
-                variant={ButtonVariantEnum.Filled}
-                type={ButtonTypeEnum.Button}
-                customClassName={styles.adminButton}
-                to="/add-service"
-              >
-                Add new service
-              </Button>
-              <Button
-                variant={ButtonVariantEnum.Outlined}
-                type={ButtonTypeEnum.Button}
-                customClassName={styles.adminButton}
-                onClick={handleDeleteService}
-              >
-                Delete Service
-              </Button>
+      <div className={styles.content}>
+        <img className="bgObject" id={styles.bgObject} src={bgImage} alt="services-bg-image"/>
+        <Glow customClassName={styles.glow}/>
+        {isAuth &&
+          <div className={styles.adminButtonContainer}>
+            <Button
+              variant={ButtonVariantEnum.Filled}
+              type={ButtonTypeEnum.Button}
+              to="/add-service"
+            >
+              Add new service
+            </Button>
+            <Button
+              variant={ButtonVariantEnum.Outlined}
+              type={ButtonTypeEnum.Button}
+              onClick={handleDeleteService}
+            >
+              Delete Service
+            </Button>
+          </div>
+        }
+        <AnimatePresence mode='wait'>
+          <motion.div
+            className={styles.textBlock}
+            animate={servicesAnimations.textBlockMotion.animate}
+            initial={servicesAnimations.textBlockMotion.initial}
+            exit={servicesAnimations.textBlockMotion.exit}
+            transition={servicesAnimations.textBlockMotion.transition}
+            key={`service-textBlock-${service.serviceTitle}`}
+          >
+            <h1 className={`smallerTitle ${styles.title}`}>{fromSlug(service.serviceTitle)}</h1>
+            <p className={styles.miniDescription}>
+              {service.miniDescription}
+            </p>
+            <ul className={styles.list}>
+              {service.benefits.map((benefit, index) =>
+              {
+                if (benefit) {
+                  return (
+                    <li className={styles.listElement} key={`benefit-${index}`}>
+                      <ServicesSvgSelector iconId="tick"/>{benefit}
+                    </li>
+                  );
+                }
+              })}
+            </ul>
+            <div className={styles.controls}>
+              <SliderButton onClick={prevPage} type={SliderButtonTypeEnum.Prev}/>
+              <SliderButton onClick={nextPage} type={SliderButtonTypeEnum.Next}/>
             </div>
-          }
-          <AnimatePresence mode='wait'>
-            <motion.div
-              className={styles.textBlock}
-              animate={servicesAnimations.textBlockMotion.animate}
-              initial={servicesAnimations.textBlockMotion.initial}
-              exit={servicesAnimations.textBlockMotion.exit}
-              transition={servicesAnimations.textBlockMotion.transition}
-              key={`service-textBlock-${service.serviceTitle}`}
-            >
-              <h1 className={`smallerTitle ${styles.title}`}>{fromSlug(service.serviceTitle)}</h1>
-              <p className={styles.miniDescription}>
-                {service.miniDescription}
-              </p>
-              <ul className={styles.list}>
-                {service.benefits.map((benefit, index) =>
-                {
-                  if (benefit) {
-                    return (
-                      <li className={styles.listElement} key={`benefit-${index}`}>
-                        <ServicesSvgSelector iconId="tick"/>{benefit}
-                      </li>
-                    );
-                  }
-                })}
-              </ul>
-              <div className={styles.controls}>
-                <SliderButton onClick={prevPage} type={SliderButtonTypeEnum.Prev}/>
-                <SliderButton onClick={nextPage} type={SliderButtonTypeEnum.Next}/>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-          <AnimatePresence mode='wait'>
-            <motion.div
-              className={styles.imageWrapper}
-              animate={servicesAnimations.imageMotion.animate}
-              initial={servicesAnimations.imageMotion.initial}
-              exit={servicesAnimations.imageMotion.exit}
-              transition={servicesAnimations.imageMotion.transition}
-              key={`service-image-${service.serviceTitle}`}
-            >
-              <img src={`${API_URL}/services/${service.serviceImage}`} alt={services[0].serviceId}/>
-            </motion.div>
+          </motion.div>
         </AnimatePresence>
-        </div>
-      </Hero>
+        <AnimatePresence mode='wait'>
+          <motion.div
+            className={styles.imageWrapper}
+            animate={servicesAnimations.imageMotion.animate}
+            initial={servicesAnimations.imageMotion.initial}
+            exit={servicesAnimations.imageMotion.exit}
+            transition={servicesAnimations.imageMotion.transition}
+            key={`service-image-${service.serviceTitle}`}
+          >
+            <img src={`${API_URL}/services/${service.serviceImage}`} alt={services[0].serviceId}/>
+          </motion.div>
+      </AnimatePresence>
+      </div>
       <Steps steps={service.steps}/>
       <Projects project={service.projects}/>
       <Feedback feedback={service.feedback}/>

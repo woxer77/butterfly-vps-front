@@ -14,7 +14,7 @@ export const HOME_TRANSITION_ANIMATION: number = 0.2;
 export const EQUIPMENT_DELAY_BEFORE_ANIMATION: number = 0.3;
 export const EQUIPMENT_TRANSITION_ANIMATION: number = 0.2;
 export const SERVICES_TRANSITION_ANIMATION: number = 0.2;
-export const SERVICES_DELAY_BEFORE_ANIMATION: number = 0.1;
+export const SERVICES_DELAY_BEFORE_ANIMATION: number = 0.2;
 export const PROJECTS_TRANSITION_ANIMATION: number = 0.4;
 
 export const EMAIL: string = 'example@business.com';

@@ -41,80 +41,78 @@ const AddService: React.FC = () => {
   return (
     <div className={styles.services}>
       <form onSubmit={handleSubmit(onSubmit)} className={adminStyles.form}>
-        <Hero>
-          <div className={styles.content}>
-            <img className="bgObject" id={styles.bgObject} src={bgImage} alt="services-bg-image"/>
-            <Glow customClassName={styles.glow}/>
-            <div className={styles.textBlock}>
+        <div className={styles.content}>
+          <img className="bgObject" id={styles.bgObject} src={bgImage} alt="services-bg-image"/>
+          <Glow customClassName={styles.glow}/>
+          <div className={styles.textBlock}>
+            <Field
+              placeholder="Building Wrapping"
+              name="serviceTitle"
+              register={register}
+              error={typeof errors?.serviceTitle?.message === 'string' ? errors?.serviceTitle?.message : ''}
+              options={validationRulesMinMax(2, 32)}
+              label="Service Title"
+            />
+            <Field
+              placeholder="Is an innovative form of large-scale advertising that involves covering the exterior of a building with a graphic wrap."
+              name="miniDescription"
+              register={register}
+              error={typeof errors?.miniDescription?.message === 'string' ? errors?.miniDescription?.message : ''}
+              options={validationRulesMinMax(16, 384)}
+              label="Mini description"
+              customClassName={adminStyles.textarea}
+              textarea
+            />
+            <ul className={styles.list}>
               <Field
-                placeholder="Building Wrapping"
-                name="serviceTitle"
+                placeholder="Protective Layer"
+                name="benefit_1"
                 register={register}
-                error={typeof errors?.serviceTitle?.message === 'string' ? errors?.serviceTitle?.message : ''}
-                options={validationRulesMinMax(2, 32)}
-                label="Service Title"
+                error={typeof errors?.benefit_1?.message === 'string' ? errors?.benefit_1?.message : ''}
+                options={validationRulesMinMax(4, 64)}
+                label="Benefit #1"
               />
               <Field
-                placeholder="Is an innovative form of large-scale advertising that involves covering the exterior of a building with a graphic wrap."
-                name="miniDescription"
+                placeholder="Eco-Friendly Options"
+                name="benefit_2"
                 register={register}
-                error={typeof errors?.miniDescription?.message === 'string' ? errors?.miniDescription?.message : ''}
-                options={validationRulesMinMax(16, 384)}
-                label="Mini description"
-                customClassName={adminStyles.textarea}
-                textarea
+                error={typeof errors?.benefit_2?.message === 'string' ? errors?.benefit_2?.message : ''}
+                options={validationRulesMinMax(4, 64, false)}
+                label="Benefit #2"
               />
-              <ul className={styles.list}>
-                <Field
-                  placeholder="Protective Layer"
-                  name="benefit_1"
-                  register={register}
-                  error={typeof errors?.benefit_1?.message === 'string' ? errors?.benefit_1?.message : ''}
-                  options={validationRulesMinMax(4, 64)}
-                  label="Benefit #1"
-                />
-                <Field
-                  placeholder="Eco-Friendly Options"
-                  name="benefit_2"
-                  register={register}
-                  error={typeof errors?.benefit_2?.message === 'string' ? errors?.benefit_2?.message : ''}
-                  options={validationRulesMinMax(4, 64)}
-                  label="Benefit #2"
-                />
-                <Field
-                  placeholder="Versatility and Customization"
-                  name="benefit_3"
-                  register={register}
-                  error={typeof errors?.benefit_3?.message === 'string' ? errors?.benefit_3?.message : ''}
-                  options={validationRulesMinMax(4, 64)}
-                  label="Benefit #3"
-                />
-                <Field
-                  placeholder="Enhanced Brand Visibility"
-                  name="benefit_4"
-                  register={register}
-                  error={typeof errors?.benefit_4?.message === 'string' ? errors?.benefit_4?.message : ''}
-                  options={validationRulesMinMax(4, 64)}
-                  label="Benefit #4"
-                />
-              </ul>
-            </div>
-            <div className={`${styles.imageWrapper} ${adminStyles.selectImage}`}>
-              <p>{serviceImage ? `${serviceImage.length} image has been successfully uploaded!` : 'Select only 1 image'}</p>
-              <ImageUpload
-                images={serviceImage}
-                setImages={setServiceImage}
-                multiple={false}
-                maxCount={1}
+              <Field
+                placeholder="Versatility and Customization"
+                name="benefit_3"
+                register={register}
+                error={typeof errors?.benefit_3?.message === 'string' ? errors?.benefit_3?.message : ''}
+                options={validationRulesMinMax(4, 64, false)}
+                label="Benefit #3"
               />
-              <div className={adminStyles.imagePlace}>
-                {serviceImage && serviceImage[0] && (
-                  <img src={URL.createObjectURL(serviceImage[0])} alt="Service" className={adminStyles.previewImage}/>
-                )}
-              </div>
+              <Field
+                placeholder="Enhanced Brand Visibility"
+                name="benefit_4"
+                register={register}
+                error={typeof errors?.benefit_4?.message === 'string' ? errors?.benefit_4?.message : ''}
+                options={validationRulesMinMax(4, 64, false)}
+                label="Benefit #4"
+              />
+            </ul>
+          </div>
+          <div className={`${styles.imageWrapper} ${adminStyles.selectImage}`}>
+            <p>{serviceImage ? `${serviceImage.length} image has been successfully uploaded!` : 'Select only 1 image'}</p>
+            <ImageUpload
+              images={serviceImage}
+              setImages={setServiceImage}
+              multiple={false}
+              maxCount={1}
+            />
+            <div className={adminStyles.imagePlace}>
+              {serviceImage && serviceImage[0] && (
+                <img src={URL.createObjectURL(serviceImage[0])} alt="Service" className={adminStyles.previewImage}/>
+              )}
             </div>
           </div>
-        </Hero>
+        </div>
         <div className={stepsStyles.steps}>
           <h1 className={`title ${stepsStyles.title}`}>
             How does this all work?

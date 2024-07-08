@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { motion } from 'framer-motion';
+
 import Hero from "../../elements/Hero/Hero";
 import Services from "./Services/Services";
 import About from "./About/About";
@@ -15,6 +17,11 @@ import { goToContact } from "../../../helpers/Form/contactForm";
 import styles from './Home.module.scss';
 
 const Home: React.FC = () => {
+  const variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+
   return (
     <div className={styles.home}>
       <Hero>
@@ -27,25 +34,70 @@ const Home: React.FC = () => {
             <div className={styles.antiBanner}/>
           </div>
           <div className={styles.textContainer}>
-            <p className={styles.bigText}>Crafting</p>
-            <p className={styles.smallText}>Stories</p>
+            <motion.p
+              className={styles.bigText}
+              variants={variants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.4, duration: 1 }}
+            >
+              Crafting
+            </motion.p>
+            <motion.p
+              className={styles.smallText}
+              variants={variants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.8, duration: 1 }}
+            >
+              Stories
+            </motion.p>
             <div className={styles.row}>
-              <Button
-                variant={ButtonVariantEnum.Outlined}
-                type={ButtonTypeEnum.Button}
-                customClassName={styles.button}
-                onClick={goToContact}
+              <motion.div
+                variants={variants}
+                initial="hidden"
+                animate="visible"
+                transition={{ delay: 2.2, duration: 0.5 }}
               >
-                Contact Us
-              </Button>
-              <p className={styles.smallText}>Brands</p>
+                <Button
+                  variant={ButtonVariantEnum.Outlined}
+                  type={ButtonTypeEnum.Button}
+                  customClassName={styles.button}
+                  onClick={goToContact}
+                >
+                  Contact Us
+                </Button>
+              </motion.div>
+              <motion.p
+                className={styles.smallText}
+                variants={variants}
+                initial="hidden"
+                animate="visible"
+                transition={{ delay: 1.6, duration: 1 }}
+              >
+                Brands
+              </motion.p>
             </div>
-            <p className={styles.bigText}>Building</p>
-            <p className={styles.description}>
+            <motion.p
+              className={styles.bigText}
+              variants={variants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 1.2, duration: 1 }}
+            >
+              Building
+            </motion.p>
+            <motion.p
+              className={styles.description}
+              variants={variants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 2.2, duration: 0.5 }}
+            >
               Our devotion to world class quality services has gained us the reputation and accreditation of many, local
               and international clients. Due to that, we have also gained their trust on all their branding related
               jobs.
-            </p>
+            </motion.p>
           </div>
         </div>
       </Hero>

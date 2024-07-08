@@ -12,6 +12,7 @@ import { setServices, setWebp } from "./redux/slices/userSlice";
 import { getAllServices } from "./services/user";
 import { IServiceRedux } from "./ts/interfaces/types";
 import { checkAuth } from "./redux/slices/adminSlice";
+import Layout from "./components/elements/Layout/Layout";
 
 const AppRoutes: React.FC = () => {
   const HomeLazy = useLazy(() => import("./components/pages/Home/Home"));
@@ -38,14 +39,22 @@ const AppRoutes: React.FC = () => {
     },
     {
       path: "/services/:serviceId",
-      element: <ServicesContainerLazy/>
+      element: (
+        <Layout>
+          <ServicesContainerLazy/>
+        </Layout>
+      )
     },
     {
       element: <ProtectedRoute />,
       children: [
         {
           path: "/add-service",
-          element: <AddServiceLazy />,
+          element: (
+            <Layout>
+              <AddServiceLazy />
+            </Layout>
+          ),
         },
         {
           path: "/add-project",

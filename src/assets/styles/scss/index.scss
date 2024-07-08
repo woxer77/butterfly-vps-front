@@ -110,10 +110,16 @@ body, input, textarea, select, button, option {
   }
 }
 
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
 .bgObject {
   position: absolute;
   z-index: -10;
   user-select: none;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .cross {

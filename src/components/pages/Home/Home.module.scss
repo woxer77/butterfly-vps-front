@@ -1,5 +1,10 @@
 @import "../../../assets/styles/scss/config-styles/vars";
 
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 0.2;}
+}
+
 .home {
   @include main-container;
 
@@ -13,6 +18,8 @@
       scale: 0.95;
 
       opacity: 0.2;
+
+      animation: fadeIn 1s ease-in-out;
 
       .antiBanner {
         position: absolute;

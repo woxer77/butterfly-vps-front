@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { motion } from 'framer-motion';
+
 import Glow from "../../UI/Glow/Glow";
 import Footer from "../../elements/Footer/Footer";
 import Hero from "../../elements/Hero/Hero";
@@ -14,6 +16,7 @@ import { fromSlug } from "../../../helpers/Form/admin";
 import { ButtonTypeEnum, ButtonVariantEnum } from "../../../ts/enums/enums";
 import { useModal } from "../../../hooks/common/useModal";
 import { useDeleteProjectMutation } from "../../../hooks/Projects/useDeleteProjectMutation";
+import { createVariants } from "../../../helpers/animations";
 
 import styles from './Projects.module.scss';
 
@@ -47,6 +50,8 @@ const Projects: React.FC = () => {
     }
   }
 
+  const variants = createVariants(0.3, 1);
+
   return (
     <div className={styles.projects}>
       <Modal onClose={closeModal} show={showModal}>
@@ -75,7 +80,7 @@ const Projects: React.FC = () => {
               variant={ButtonVariantEnum.Outlined}
               type={ButtonTypeEnum.Button}
               customClassName={styles.adminButton}
-              onClick={openModal}
+              onClick={projectsIdSlug.length > 0 ? openModal : () => {}}
             >
               Delete Project
             </Button>
@@ -86,8 +91,22 @@ const Projects: React.FC = () => {
         <img className="bgObject" id={styles.bgObject3} src={bgImage3} alt="bg-rectangles-4"/>
         <Glow customClassName={styles.glow}/>
         <div className={styles.content}>
-          <h1 className={`title ${styles.title}`}>Work that we have done</h1>
-          <div className={styles.filters}>
+          <motion.h1
+            className={`title ${styles.title}`}
+            variants={variants}
+            initial="hidden"
+            animate="visible"
+            custom={0}
+          >
+            Work that we have done
+          </motion.h1>
+          <motion.div
+            className={styles.filters}
+            variants={variants}
+            initial="hidden"
+            animate="visible"
+            custom={1}
+          >
             {filters.map((filter) => (
               <div
                 className={styles.filter}
@@ -98,7 +117,7 @@ const Projects: React.FC = () => {
                 {fromSlug(filter)}
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </Hero>
       <WorksContainer filter={currentFilter}/>
