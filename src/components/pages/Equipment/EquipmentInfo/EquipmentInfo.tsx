@@ -44,23 +44,21 @@ const EquipmentInfo: React.FC = () => {
             </motion.div>
           </AnimatePresence>
         </div>
-          <div
-            className={styles.imageWrapper}
-          >
-            <AnimatePresence mode='wait'>
-              <motion.img
-                src={webp ? equipment[position].image.webp : equipment[position].image.png}
-                alt={equipment[position].title}
-                className={styles.image}
-                animate={equipmentAnimations.imageMotion.animate}
-                initial={equipmentAnimations.imageMotion.initial}
-                exit={equipmentAnimations.imageMotion.exit}
-                transition={equipmentAnimations.imageMotion.transition}
-                key={`equipment-image-${position}`}
-                loading="lazy"
-              />
-            </AnimatePresence>
-          </div>
+        <div className={styles.imageWrapper}>
+          <AnimatePresence mode='wait'>
+            <motion.img
+              src={webp ? equipment[position].image.webp : equipment[position].image.png}
+              alt={equipment[position].title}
+              className={styles.image}
+              animate={equipmentAnimations.imageMotion.animate}
+              initial={equipmentAnimations.imageMotion.initial}
+              exit={equipmentAnimations.imageMotion.exit}
+              transition={equipmentAnimations.imageMotion.transition}
+              key={`equipment-image-${position}`}
+              loading="lazy"
+            />
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );

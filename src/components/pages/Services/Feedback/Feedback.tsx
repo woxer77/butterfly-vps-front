@@ -21,7 +21,7 @@ const Feedback: React.FC<FeedbackProps> = ({ feedback }) => {
       <img className="bgObject" id={styles.bgObject} src={bgImage} alt="feedback-bg-image" loading="lazy"/>
       <div className={styles.stars}>
         {[...Array(feedback.starsCount)].map((_, index) => (
-          <ServicesSvgSelector iconId="star" key={`star-${index}`}/>
+          <ServicesSvgSelector iconId="star-feedback" key={`star-${index}`}/>
         ))}
       </div>
       <p className={styles.author}>

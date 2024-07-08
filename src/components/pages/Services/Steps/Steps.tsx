@@ -20,10 +20,10 @@ const Steps: React.FC<StepsProps> = ({ steps }) => {
         Steps required to achieve your desired result
       </p>
       <div className={styles.stepsList}>
-        {steps.map((step) => (
-          <div className={styles.step} key={step.title}>
+        {steps.map((step, index) => (
+          <div className={styles.step} key={`step-${step.title}-${index}`}>
             <div className={`iconBorder ${styles.iconBorder}`}>
-              <ServicesSvgSelector iconId="star-2"/>
+              <ServicesSvgSelector iconId="star-step"/>
             </div>
             <h3 className={styles.stepTitle}>
               {step.title}

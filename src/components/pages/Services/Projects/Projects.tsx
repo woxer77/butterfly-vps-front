@@ -4,12 +4,13 @@ import Glow from "../../../UI/Glow/Glow";
 
 import { useAppSelector } from "../../../../hooks/common/redux";
 import { API_URL } from "../../../../configs/config";
-import { IProject } from "../../../../ts/interfaces/types";
+import { IProjectMini } from "../../../../ts/interfaces/types";
+import { fromSlug } from "../../../../helpers/Form/admin";
 
 import styles from './Projects.module.scss';
 
 interface ProjectsProps {
-  project: IProject;
+  project: IProjectMini;
 }
 
 const Projects: React.FC<ProjectsProps> = ({ project }) => {
@@ -23,7 +24,7 @@ const Projects: React.FC<ProjectsProps> = ({ project }) => {
       <Glow customClassName={styles.glow}/>
       <img className="bgObject" id={styles.bgObject1} src={bgImage1} alt="services-project-bg-1" loading="lazy"/>
       <img className="bgObject" id={styles.bgObject2} src={bgImage2} alt="services-project-bg-2" loading="lazy"/>
-      <h1 className={`title ${styles.title}`}>{project.title}</h1>
+      <h1 className={`title ${styles.title}`}>{fromSlug(project.title)}</h1>
       <p className={styles.description}>{project.description}</p>
       <div className={styles.images}>
         {project.works.map((image, index) => {

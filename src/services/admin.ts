@@ -1,12 +1,25 @@
+import { AxiosResponse } from "axios";
+
+import { AdminResponse, IMessageResponse } from "../ts/interfaces/types";
 import apiClient from '../configs/axios';
-import { IService } from "../ts/interfaces/types";
 
-export const login = async (email: string, password: string) => apiClient.post('/admin/login', { email, password });
-export const logout = async () => apiClient.post('/admin/logout');
-export const uploadImage = async (data: FormData) => apiClient.post('/admin/upload', data, {
-  headers: { 'Content-Type': 'multipart/form-data' }
-});
+// Admin authorization functions
+export const login = async (email: string, password: string): Promise<AxiosResponse<AdminResponse>> =>
+  apiClient.post('/admin/login', { email, password });
+export const logout = async () =>
+  apiClient.post('/admin/logout');
 
-export const addService = async (data: FormData) => apiClient.post('/admin/add-service', data, {
-  headers: { 'Content-Type': 'multipart/form-data' }});
-export const deleteService = async (serviceId: string | undefined) => apiClient.post('/admin/delete-service', { serviceId });
+// Service management functions
+export const addService = async (data: FormData): Promise<AxiosResponse<IMessageResponse>> =>
+  apiClient.post('/admin/add-service', data, {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  });
+export const deleteService = async (serviceId: string | undefined): Promise<AxiosResponse<IMessageResponse>> =>
+  apiClient.post('/admin/delete-service', { serviceId });
+// Project management functions
+export const addProject = async (data: FormData): Promise<AxiosResponse<IMessageResponse>> =>
+  apiClient.post('/admin/add-project', data, {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  });
+export const deleteProject = async (projectId: string | undefined): Promise<AxiosResponse<IMessageResponse>> =>
+  apiClient.post('/admin/delete-project', { projectId });

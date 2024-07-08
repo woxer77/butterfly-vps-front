@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { AnimatePresence, motion } from "framer-motion";
+
 import ServicesSvgSelector from "../../../assets/images/icons/services/ServicesSvgSelector";
 import Hero from "../../elements/Hero/Hero";
 import Steps from "./Steps/Steps";
@@ -17,9 +19,10 @@ import { IService } from "../../../ts/interfaces/types";
 import { API_URL } from "../../../configs/config";
 import { useServiceNavigation } from "../../../hooks/Services/useServiceNavigation";
 import { useDeleteService } from "../../../hooks/Services/useDeleteService";
+import { fromSlug } from "../../../helpers/Form/admin";
+import { servicesAnimations } from "../../../configs/equipment";
 
 import styles from './Services.module.scss';
-import { fromSlug } from "../../../helpers/Form/admin";
 
 interface ServicesProps {
   service: IService;
@@ -29,8 +32,8 @@ interface ServicesProps {
 
 const Services: React.FC<ServicesProps> = ({ service, servicesId, serviceId }) => {
   const webp = useAppSelector((state) => state.userReducer.webp);
-  const isAuth = useAppSelector((state) => state.adminReducer.isAuth);
   const services = useAppSelector((state) => state.userReducer.services);
+  const isAuth = useAppSelector((state) => state.adminReducer.isAuth);
 
   const { nextPage, prevPage } = useServiceNavigation(servicesId, serviceId);
   const { handleDeleteService } = useDeleteService(serviceId, servicesId);
@@ -63,31 +66,49 @@ const Services: React.FC<ServicesProps> = ({ service, servicesId, serviceId }) =
               </Button>
             </div>
           }
-          <div className={styles.textBlock}>
-            <h1 className={`smallerTitle ${styles.title}`}>{fromSlug(service.serviceTitle)}</h1>
-            <p className={styles.miniDescription}>
-              {service.miniDescription}
-            </p>
-            <ul className={styles.list}>
-              {service.benefits.map((benefit, index) =>
-              {
-                if (benefit) {
-                  return (
-                    <li className={styles.listElement} key={`benefit-${index}`}>
-                      <ServicesSvgSelector iconId="tick"/>{benefit}
-                    </li>
-                  );
-                }
-              })}
-            </ul>
-            <div className={styles.controls}>
-              <SliderButton onClick={prevPage} type={SliderButtonTypeEnum.Prev}/>
-              <SliderButton onClick={nextPage} type={SliderButtonTypeEnum.Next}/>
-            </div>
-          </div>
-          <div className={styles.imageWrapper}>
-            <img src={`${API_URL}/services/${service.serviceImage}`} alt={services[0].serviceId}/>
-          </div>
+          <AnimatePresence mode='wait'>
+            <motion.div
+              className={styles.textBlock}
+              animate={servicesAnimations.textBlockMotion.animate}
+              initial={servicesAnimations.textBlockMotion.initial}
+              exit={servicesAnimations.textBlockMotion.exit}
+              transition={servicesAnimations.textBlockMotion.transition}
+              key={`service-textBlock-${service.serviceTitle}`}
+            >
+              <h1 className={`smallerTitle ${styles.title}`}>{fromSlug(service.serviceTitle)}</h1>
+              <p className={styles.miniDescription}>
+                {service.miniDescription}
+              </p>
+              <ul className={styles.list}>
+                {service.benefits.map((benefit, index) =>
+                {
+                  if (benefit) {
+                    return (
+                      <li className={styles.listElement} key={`benefit-${index}`}>
+                        <ServicesSvgSelector iconId="tick"/>{benefit}
+                      </li>
+                    );
+                  }
+                })}
+              </ul>
+              <div className={styles.controls}>
+                <SliderButton onClick={prevPage} type={SliderButtonTypeEnum.Prev}/>
+                <SliderButton onClick={nextPage} type={SliderButtonTypeEnum.Next}/>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+          <AnimatePresence mode='wait'>
+            <motion.div
+              className={styles.imageWrapper}
+              animate={servicesAnimations.imageMotion.animate}
+              initial={servicesAnimations.imageMotion.initial}
+              exit={servicesAnimations.imageMotion.exit}
+              transition={servicesAnimations.imageMotion.transition}
+              key={`service-image-${service.serviceTitle}`}
+            >
+              <img src={`${API_URL}/services/${service.serviceImage}`} alt={services[0].serviceId}/>
+            </motion.div>
+        </AnimatePresence>
         </div>
       </Hero>
       <Steps steps={service.steps}/>

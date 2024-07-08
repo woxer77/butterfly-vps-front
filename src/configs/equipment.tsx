@@ -2,10 +2,13 @@ import {
   EQUIPMENT_DELAY_BEFORE_ANIMATION,
   EQUIPMENT_TRANSITION_ANIMATION,
   HOME_DELAY_BEFORE_ANIMATION,
-  HOME_TRANSITION_ANIMATION
+  HOME_TRANSITION_ANIMATION,
+  PROJECTS_TRANSITION_ANIMATION,
+  SERVICES_DELAY_BEFORE_ANIMATION,
+  SERVICES_TRANSITION_ANIMATION
 } from "./config";
 
-interface Image {
+interface EquipmentImage {
   webp: string;
   png: string;
 }
@@ -15,7 +18,7 @@ interface Equipment {
   description: string;
   miniDescription: string;
   moreInfo: () => JSX.Element;
-  image: Image;
+  image: EquipmentImage;
 }
 
 export const equipment: Equipment[] = [
@@ -245,42 +248,64 @@ export const equipment: Equipment[] = [
 
 export const homeAnimations = {
   titleMotion: {
-    animate: {x: 0, opacity: 1, transition: {delay: HOME_DELAY_BEFORE_ANIMATION + 0.05}},
-    initial: {x: -200, opacity: 0},
-    exit: {x: 100, opacity: 0},
-    transition: {duration: HOME_TRANSITION_ANIMATION}
+    animate: { x: 0, opacity: 1, transition: { delay: HOME_DELAY_BEFORE_ANIMATION + 0.05 } },
+    initial: { x: -200, opacity: 0 },
+    exit: { x: 100, opacity: 0 },
+    transition: { duration: HOME_TRANSITION_ANIMATION }
   },
   descriptionMotion: {
-    animate: {x: 0, opacity: 1, transition: {delay: HOME_DELAY_BEFORE_ANIMATION}},
-    initial: {x: -200, opacity: 0},
-    exit: {x: 100, opacity: 0, transition: {delay: HOME_DELAY_BEFORE_ANIMATION + 0.0001}},
-    transition: {duration: HOME_TRANSITION_ANIMATION}
+    animate: { x: 0, opacity: 1, transition: { delay: HOME_DELAY_BEFORE_ANIMATION } },
+    initial: { x: -200, opacity: 0 },
+    exit: { x: 100, opacity: 0, transition: { delay: HOME_DELAY_BEFORE_ANIMATION } },
+    transition: { duration: HOME_TRANSITION_ANIMATION }
   },
   imageMotion: {
-    animate: {x: 0, opacity: 1, transition: {delay: HOME_DELAY_BEFORE_ANIMATION}},
-    initial: {x: 200, opacity: 0},
-    exit: {opacity: 0},
-    transition: {duration: HOME_TRANSITION_ANIMATION}
+    animate: { x: 0, opacity: 1, transition: { delay: HOME_DELAY_BEFORE_ANIMATION * 2 } },
+    initial: { x: 200, opacity: 0 },
+    exit: { opacity: 0 },
+    transition: { duration: HOME_TRANSITION_ANIMATION }
   },
 };
 
 export const equipmentAnimations = {
   titleMotion: {
-    animate: {y: 0, opacity: 1, transition: {delay: EQUIPMENT_TRANSITION_ANIMATION + 0.1}},
-    initial: {y: -100, opacity: 0},
-    exit: {y: 100, opacity: 0, transition: {delay: EQUIPMENT_TRANSITION_ANIMATION + 0.0001}},
-    transition: {duration: HOME_TRANSITION_ANIMATION}
+    animate: { y: 0, opacity: 1, transition: { delay: EQUIPMENT_TRANSITION_ANIMATION + 0.1 } },
+    initial: { y: -100, opacity: 0 },
+    exit: { y: 100, opacity: 0, transition: { delay: EQUIPMENT_TRANSITION_ANIMATION } },
+    transition: { duration: HOME_TRANSITION_ANIMATION }
   },
   descriptionMotion: {
-    animate: {y: 0, opacity: 1, transition: {delay: EQUIPMENT_TRANSITION_ANIMATION}},
-    initial: {y: -200, opacity: 0},
-    exit: {y: 100, opacity: 0},
-    transition: {duration: HOME_TRANSITION_ANIMATION}
+    animate: { y: 0, opacity: 1, transition: { delay: EQUIPMENT_TRANSITION_ANIMATION } },
+    initial: { y: -200, opacity: 0 },
+    exit: { y: 100, opacity: 0 },
+    transition: { duration: HOME_TRANSITION_ANIMATION }
   },
   imageMotion: {
-    animate: {x: 0, opacity: 1, transition: {delay: EQUIPMENT_TRANSITION_ANIMATION}},
-    initial: {x: 200, opacity: 0},
-    exit: {x: 200, opacity: 0},
-    transition: {duration: EQUIPMENT_TRANSITION_ANIMATION}
+    animate: { x: 0, opacity: 1, transition: { delay: EQUIPMENT_TRANSITION_ANIMATION * 2 } },
+    initial: { x: 200, opacity: 0 },
+    exit: { x: 200, opacity: 0 },
+    transition: { duration: EQUIPMENT_TRANSITION_ANIMATION }
   },
+};
+
+export const servicesAnimations = {
+  textBlockMotion: {
+    animate: { y: 0, opacity: 1, transition: { delay: SERVICES_DELAY_BEFORE_ANIMATION } },
+    initial: { y: -100, opacity: 0 },
+    exit: { y: 100, opacity: 0, transition: { delay: SERVICES_DELAY_BEFORE_ANIMATION } },
+    transition: { duration: SERVICES_TRANSITION_ANIMATION }
+  },
+  imageMotion: {
+    animate: { x: 0, opacity: 1, transition: { delay: SERVICES_DELAY_BEFORE_ANIMATION } },
+    initial: { x: 200, opacity: 0 },
+    exit: { x: 200, opacity: 0 },
+    transition: { duration: SERVICES_TRANSITION_ANIMATION }
+  },
+};
+
+export const projectsAnimation = {
+  animate: { y: 0, opacity: 1 },
+  initial: { y: 100, opacity: 0 },
+  exit: { y: -100, opacity: 0, transition: { delay: PROJECTS_TRANSITION_ANIMATION } },
+  transition: { duration: PROJECTS_TRANSITION_ANIMATION }
 };

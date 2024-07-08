@@ -9,8 +9,8 @@ export const useDeleteService = (serviceId: string | undefined, servicesId: stri
   const mutation = useMutation({
     mutationKey: ['deleteService', serviceId],
     mutationFn: () => deleteService(serviceId),
-    onSuccess: () => {
-      alert('Service has been successfully deleted');
+    onSuccess: (res) => {
+      alert(res.data.message);
 
       if (servicesId.length > 0){
         navigate(`/services/${servicesId[0]}`);

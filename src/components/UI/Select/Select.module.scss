@@ -1,0 +1,17 @@
+.select {
+  .selectElement {
+    width: 100%;
+    position: relative;
+
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 30px;
+
+    background: #fff;
+
+    max-height: 47px;
+
+    cursor: pointer;
+  }
+}

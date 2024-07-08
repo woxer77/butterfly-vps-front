@@ -1,0 +1,22 @@
+.workInProgress {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  margin: 0 0 110px 0px;
+
+  img {
+    width: 1040px;
+    height: 800px;
+  }
+
+  .text {
+    font-weight: 700;
+    font-size: 64px;
+    text-transform: uppercase;
+  }
+}

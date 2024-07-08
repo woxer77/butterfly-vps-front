@@ -8,17 +8,19 @@ import styles from './Hero.module.scss';
 
 interface HeroProps {
   children: React.ReactNode;
+  customClassName?: string;
 }
 
-const Hero: React.FC<HeroProps> = ({ children }) => {
+const Hero: React.FC<HeroProps> = ({ children, customClassName }) => {
   const [isMenuActive, setIsMenuActive] = React.useState<boolean>(false);
+  const heroStyles = customClassName ? `${styles.hero} ${customClassName}` : styles.hero;
 
   return (
     <div className={styles.heroWrapper}>
       <Header/>
       <AsideSocials setIsMenuActive={setIsMenuActive}/>
       <SideMenu isMenuActive={isMenuActive} setIsMenuActive={setIsMenuActive}/>
-      <div className={styles.hero}>{children}</div>
+      <div className={heroStyles}>{children}</div>
     </div>
   );
 };

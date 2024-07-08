@@ -20,6 +20,29 @@ const Footer: React.FC = () => {
       <div className={styles.info}>
         <GlobalSvgSelector iconId="logo" className={styles.logo}/>
         <p className={styles.text}>
+          Based in Dubai, AI quoz Industrial Area 4, is a leading large format printing house that specializes in
+          Advertising, and Designing & Production.
+        </p>
+        <div className={styles.row}>
+          <p className={styles.text}>{EMAIL}</p>
+          <p className={styles.text}>{PHONE_NUMBER}</p>
+        </div>
+        <div className={styles.socials}>
+          <Link to={FACEBOOK_LINK} target="_blank" className={`${styles.icon} socialIcon`}>
+            <GlobalSvgSelector iconId="facebook" id="facebook"/>
+          </Link>
+          <Link to={INSTAGRAM_LINK} target="_blank" className={`${styles.icon} socialIcon`}>
+            <GlobalSvgSelector iconId="instagram" id="instagram"/>
+          </Link>
+          <Link to={WHATSAPP_LINK} target="_blank" className={`${styles.icon} socialIcon`}>
+            <GlobalSvgSelector iconId="whatsapp" id="whatsapp"/>
+          </Link>
+        </div>
+      </div>
+
+      {/*<div className={styles.info}>
+        <GlobalSvgSelector iconId="logo" className={styles.logo}/>
+        <p className={styles.text}>
           Based in Dubai, AI quoz Industrial Area 4, is a leading large format printing house that specializes in Advertising, and Designing & Production.
         </p>
       </div>
@@ -38,7 +61,7 @@ const Footer: React.FC = () => {
             <GlobalSvgSelector iconId="whatsapp" id="whatsapp"/>
           </Link>
         </div>
-      </div>
+      </div>*/}
     </div>
   );
 };

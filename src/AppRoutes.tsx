@@ -10,7 +10,7 @@ import { useAppDispatch } from "./hooks/common/redux";
 import useWebpSupport from "./hooks/common/useWebpSupport";
 import { setServices, setWebp } from "./redux/slices/userSlice";
 import { getAllServices } from "./services/user";
-import { IServiceShortInfo } from "./ts/interfaces/types";
+import { IServiceRedux } from "./ts/interfaces/types";
 import { checkAuth } from "./redux/slices/adminSlice";
 
 const AppRoutes: React.FC = () => {
@@ -18,9 +18,10 @@ const AppRoutes: React.FC = () => {
   const AboutLazy = useLazy(() => import("./components/pages/About/About"));
   const EquipmentLazy = useLazy(() => import("./components/pages/Equipment/Equipment"));
   const ServicesContainerLazy = useLazy(() => import("./containers/pages/ServicesContainer"));
-  // const ProjectsLazy = useLazy(() => import("./components/pages/Projects/Projects"));
+  const ProjectsLazy = useLazy(() => import("./components/pages/Projects/Projects"));
   const AdminLazy = useLazy(() => import("./components/pages/Admin/Admin"));
   const AddServiceLazy = useLazy(() => import("./components/pages/AddService/AddService"));
+  const AddProjectLazy = useLazy(() => import("./components/pages/AddProject/AddProject"));
 
   const router = createBrowserRouter([
     {
@@ -37,7 +38,7 @@ const AppRoutes: React.FC = () => {
     },
     {
       path: "/services/:serviceId",
-      element: <ServicesContainerLazy/>,
+      element: <ServicesContainerLazy/>
     },
     {
       element: <ProtectedRoute />,
@@ -47,15 +48,19 @@ const AppRoutes: React.FC = () => {
           element: <AddServiceLazy />,
         },
         {
+          path: "/add-project",
+          element: <AddProjectLazy />,
+        },
+        {
           path: "*",
           element: <div>This page does not exist</div>,
         },
       ]
     },
-    /*{
+    {
       path: "/projects",
       element: <ProjectsLazy/>,
-    },*/
+    },
     {
       path: "/admin",
       element: <AdminLazy/>,
@@ -78,13 +83,13 @@ const AppRoutes: React.FC = () => {
     queryFn: () => getAllServices(),
     refetchOnWindowFocus: false
   });
-  const services_DB = data?.data as IServiceShortInfo[] || [];
+  const servicesRedux = data?.data as IServiceRedux[] || [];
 
   React.useEffect(() => {
     if (isLoading || isError) return;
 
-    dispatch(setServices(services_DB));
-  }, [isLoading, isError, services_DB]);
+    dispatch(setServices(servicesRedux));
+  }, [isLoading, isError, servicesRedux]);
 
   React.useEffect(() => {
     if (localStorage.getItem('token')) {

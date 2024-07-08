@@ -1,0 +1,54 @@
+@import "../../../assets/styles/scss/config-styles/vars";
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  .modalContent {
+    background-color: white;
+    padding: 30px 20px 20px 20px;
+    border-radius: 4px;
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+
+    p {
+      color: $default-bg-color;
+    }
+
+    .cross {
+      top: 15px;
+      right: 10px;
+
+      width: 24px;
+      height: 24px;
+
+      &:hover {
+        .line {
+          background: rgba(0, 0, 0, 0.8);
+        }
+      }
+
+      .line {
+        background: rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    button {
+      padding: 10px 0;
+      font-size: 17px;
+    }
+
+    select {
+      margin-bottom: 15px;
+    }
+  }
+}

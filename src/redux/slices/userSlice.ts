@@ -1,14 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IServiceShortInfo } from "../../ts/interfaces/types";
 
-interface IUserSlice {
+import { IServiceRedux } from "../../ts/interfaces/types";
+
+interface UserSlice {
   webp: boolean;
-  services: IServiceShortInfo[];
+  services: IServiceRedux[];
+  projectsId: string[];
 }
 
-const initialState: IUserSlice = {
+const initialState: UserSlice = {
   webp: false,
-  services: []
+  services: [],
+  projectsId: []
 };
 
 const userSlice = createSlice({
@@ -18,15 +21,18 @@ const userSlice = createSlice({
     setWebp: (state, action: PayloadAction<boolean>) => {
       state.webp = action.payload;
     },
-    setServices: (state, action: PayloadAction<IServiceShortInfo[]>) => {
+    setServices: (state, action: PayloadAction<IServiceRedux[]>) => {
       state.services = action.payload;
+    },
+    setProjectsId: (state, action: PayloadAction<string[]>) => {
+      state.projectsId = action.payload;
     },
     resetAll: () => initialState
   }
 });
 
 export const {
-  setWebp, setServices, resetAll
+  setWebp, setServices, setProjectsId, resetAll
 } = userSlice.actions;
 
 export default userSlice.reducer;

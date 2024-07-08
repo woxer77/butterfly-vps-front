@@ -39,17 +39,13 @@ const Admin: React.FC = () => {
       navigate('/');
     },
     onError: (error) => {
+      alert(error.message);
       console.log(error);
     }
   });
 
   const onSubmit = (formData: FieldValues) => {
-    const user = {
-      email: formData.email,
-      password: formData.password
-    };
-
-    mutation.mutate(user);
+    mutation.mutate(formData as IAdminLogin);
   };
 
   return (
@@ -73,7 +69,13 @@ const Admin: React.FC = () => {
           options={passwordOptions}
           password={true}
         />
-        <Button variant={ButtonVariantEnum.Filled} type={ButtonTypeEnum.Submit} customClassName={styles.button}>Login</Button>
+        <Button
+          variant={ButtonVariantEnum.Filled}
+          type={ButtonTypeEnum.Submit}
+          customClassName={styles.button}
+        >
+          Login
+        </Button>
       </form>
     </div>
   );

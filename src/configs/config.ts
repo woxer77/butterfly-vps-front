@@ -1,4 +1,4 @@
-const DEVELOPMENT_STAGE: string = 'production';
+const DEVELOPMENT_STAGE: string = 'development';
 
 export const CAROUSEL_FAST_DURATION: number = 25;
 export const CAROUSEL_SLOW_DURATION: number = 75;
@@ -13,6 +13,9 @@ export const HOME_DELAY_BEFORE_ANIMATION: number = 0.2;
 export const HOME_TRANSITION_ANIMATION: number = 0.2;
 export const EQUIPMENT_DELAY_BEFORE_ANIMATION: number = 0.3;
 export const EQUIPMENT_TRANSITION_ANIMATION: number = 0.2;
+export const SERVICES_TRANSITION_ANIMATION: number = 0.2;
+export const SERVICES_DELAY_BEFORE_ANIMATION: number = 0.1;
+export const PROJECTS_TRANSITION_ANIMATION: number = 0.4;
 
 export const EMAIL: string = 'example@business.com';
 export const PHONE_NUMBER: string = '+971-58-608-5997';

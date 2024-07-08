@@ -1,72 +1,15 @@
-export const serviceTitleOptions = {
-  required: 'Required field',
-  maxLength: {
-    value: 32,
-    message: 'Maximum 32 characters'
-  },
-  minLength: {
-    value: 2,
-    message: 'Minimum 2 characters'
-  }
-};
-
-export const miniDescriptionOptions = {
-  required: 'Required field',
-  maxLength: {
-    value: 384,
-    message: 'Maximum 384 characters'
-  },
-  minLength: {
-    value: 16,
-    message: 'Minimum 16 characters'
-  }
-};
-
-export const benefitOptions = {
-  maxLength: {
-    value: 64,
-    message: 'Maximum 64 characters'
-  },
-  minLength: {
-    value: 4,
-    message: 'Minimum 4 characters'
-  }
-};
-
-export const stepTitleOptions = {
-  required: 'Required field',
-  maxLength: {
-    value: 64,
-    message: 'Maximum 64 characters'
-  },
-  minLength: {
-    value: 4,
-    message: 'Minimum 4 characters'
-  }
-};
-
-export const stepDescriptionOptions = {
-  required: 'Required field',
-  maxLength: {
-    value: 256,
-    message: 'Maximum 256 characters'
-  },
-  minLength: {
-    value: 16,
-    message: 'Minimum 16 characters'
-  }
-};
-
-export const projectDescriptionOptions = {
-  required: 'Required field',
-  maxLength: {
-    value: 1024,
-    message: 'Maximum 1024 characters'
-  },
-  minLength: {
-    value: 32,
-    message: 'Minimum 32 characters'
-  }
+export const validationRulesMinMax = (minLengthValue: number, maxLengthValue: number) => {
+  return {
+    required: 'Required field',
+    maxLength: {
+      value: maxLengthValue,
+      message: `Maximum ${maxLengthValue} characters`
+    },
+    minLength: {
+      value: minLengthValue,
+      message: `Minimum ${minLengthValue} characters`
+    }
+  };
 };
 
 export const starsCountOptions = {
@@ -82,28 +25,12 @@ export const starsCountOptions = {
   }
 };
 
-export const feedbackAuthorOptions = {
+export const dateOptions = {
   required: 'Required field',
-  maxLength: {
-    value: 32,
-    message: 'Maximum 32 characters'
+  pattern: {
+    value: /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/((19|20)[0-9][0-9]|2100)$/,
+    message: 'Use correct date in DD/MM/YYYY format',
   },
-  minLength: {
-    value: 4,
-    message: 'Minimum 4 characters'
-  }
-};
-
-export const feedbackTextOptions = {
-  required: 'Required field',
-  maxLength: {
-    value: 1024,
-    message: 'Maximum 1024 characters'
-  },
-  minLength: {
-    value: 32,
-    message: 'Minimum 32 characters'
-  }
 };
 
 export function toSlug(text: string) {

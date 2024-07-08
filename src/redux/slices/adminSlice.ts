@@ -2,17 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { API_URL } from "../../configs/config";
 import apiClient from "../../configs/axios";
-import { IAdmin } from "../../ts/interfaces/types";
-
-interface AdminResponse {
-  adminId: number;
-}
-
-interface RefreshResponse {
-  accessToken: string;
-  refreshToken: string;
-  admin: AdminResponse;
-}
+import { AdminResponse, IAdmin } from "../../ts/interfaces/types";
 
 const initialState: IAdmin = {
   adminId: null,
@@ -37,7 +27,7 @@ export const checkAuth = createAsyncThunk(
   'admin/checkAuth',
   async () => {
     try {
-      const response = await apiClient.get<RefreshResponse>(`${API_URL}/admin/refresh`, { withCredentials: true });
+      const response = await apiClient.get<AdminResponse>(`${API_URL}/admin/refresh`, { withCredentials: true });
       const { accessToken, admin } = response.data;
 
       localStorage.setItem('token', accessToken);

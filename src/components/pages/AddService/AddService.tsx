@@ -1,162 +1,42 @@
 import React from 'react';
 
-import { FieldValues, useForm } from "react-hook-form";
-
 import ServicesSvgSelector from "../../../assets/images/icons/services/ServicesSvgSelector";
 import Hero from "../../elements/Hero/Hero";
 import Field from "../../UI/Field/Field";
 import Glow from "../../UI/Glow/Glow";
+import Button from "../../UI/Button/Button";
+import ImageUpload from "../../elements/ImageUpload/ImageUpload";
 
 import { useAppSelector } from "../../../hooks/common/redux";
 import { ButtonTypeEnum, ButtonVariantEnum } from "../../../ts/enums/enums";
-import {
-  benefitOptions,
-  feedbackAuthorOptions,
-  feedbackTextOptions,
-  miniDescriptionOptions,
-  projectDescriptionOptions,
-  serviceTitleOptions,
-  starsCountOptions,
-  stepDescriptionOptions,
-  stepTitleOptions, toSlug
-} from "../../../helpers/Form/admin";
+import { starsCountOptions, validationRulesMinMax } from "../../../helpers/Form/admin";
+import { useAddServiceForm } from "../../../hooks/AddService/useAddServiceForm";
 
 import styles from '../Services/Services.module.scss';
 import adminStyles from './AddService.module.scss';
 import stepsStyles from '../Services/Steps/Steps.module.scss';
 import projectsStyles from '../Services/Projects/Projects.module.scss';
 import feedbackStyles from '../Services/Feedback/Feedback.module.scss';
-import Button from "../../UI/Button/Button";
-import admin from "../Admin/Admin";
-import ImageUpload from "../../elements/ImageUpload/ImageUpload";
-import { useMutation } from "@tanstack/react-query";
-import { addService, login } from "../../../services/admin";
-import { setAdminId, setAuth } from "../../../redux/slices/adminSlice";
-import works from "../Projects/Works/Works";
-import { useNavigate } from "react-router-dom";
-
-interface IStep {
-  title: string,
-  description: string
-}
 
 const AddService: React.FC = () => {
-  const webp = useAppSelector((state) => state.userReducer.webp);
-  const services = useAppSelector(state => state.userReducer.services);
-  const servicesId = services.map(service => service.serviceId);
-  const navigate = useNavigate();
+  const webp = useAppSelector(state => state.userReducer.webp);
 
   const bgImage = webp ? '/services/webp/bg-rectangles-2.webp' : '/services/png/bg-rectangles-2.png';
 
   const bgImageProjects1 = webp ? '/services/webp/bg-rectangles-3.webp' : '/services/png/bg-rectangles-3.png';
   const bgImageProjects2 = webp ? '/services/webp/bg-rectangles-4.webp' : '/services/png/bg-rectangles-4.png';
 
-  const { register, handleSubmit, formState: { errors }, getValues } = useForm({ mode: "onChange" });
-
-  const [serviceImage, setServiceImage] = React.useState<File[] | null>(null);
-  const [worksImages, setWorksImages] = React.useState<File[] | null>(null);
-
-  const stepsFields = [
-    {
-      title: {
-        placeholder: 'Consultation and Design',
-        name: 'stepTitle_1',
-        error: errors?.stepTitle_1?.message,
-        options: stepTitleOptions,
-        label: 'Step Title #1'
-      },
-      description: {
-        placeholder: 'Our process begins with a thorough consultation to understand your branding needs and objectives.',
-        name: 'stepDescription_1',
-        error: errors?.stepDescription_1?.message,
-        options: stepDescriptionOptions,
-        label: 'Step Description #1'
-      }
-    },
-    {
-      title: {
-        placeholder: 'Printing and Material Selection',
-        name: 'stepTitle_2',
-        error: errors?.stepTitle_2?.message,
-        options: stepTitleOptions,
-        label: 'Step Title #2'
-      },
-      description: {
-        placeholder: 'Once the design is finalized, we proceed with the printing phase.',
-        name: 'stepDescription_2',
-        error: errors?.stepDescription_2?.message,
-        options: stepDescriptionOptions,
-        label: 'Step Description #2'
-      }
-    },
-    {
-      title: {
-        placeholder: 'Installation and Maintenance',
-        name: 'stepTitle_3',
-        error: errors?.stepTitle_3?.message,
-        options: stepTitleOptions,
-        label: 'Step Title #3'
-      },
-      description: {
-        placeholder: 'The final step is the professional installation of the building wrap.',
-        name: 'stepDescription_3',
-        error: errors?.stepDescription_3?.message,
-        options: stepDescriptionOptions,
-        label: 'Step Description #3'
-      }
-    },
-  ]
-
-  const mutation = useMutation({
-    mutationKey: ['addService'],
-    mutationFn: (data: FormData) => addService(data),
-    onSuccess: () => {
-      alert('Service has been successfully added!');
-      const newServiceId = getValues('serviceTitle');
-      console.log('newServiceId', newServiceId);
-
-      if (newServiceId){
-        navigate(`/services/${toSlug(newServiceId)}`);
-      } else {
-        navigate('/home');
-      }
-
-      window.location.reload();
-    },
-    onError: (error) => {
-      alert(error.message);
-      console.log(error);
-    }
-  });
-
-  const onSubmit = (formData: FieldValues) => {
-    if (!serviceImage || (!worksImages || worksImages.length === 0)) {
-      alert('Please select at least 1 image in each section!');
-      return;
-    }
-
-    const formDataObj = new FormData();
-
-    if (serviceImage) {
-      formDataObj.append('service_image', serviceImage[0], serviceImage[0].name);
-    }
-
-    if (worksImages) {
-      worksImages.forEach((image) => {
-        formDataObj.append('works_images', image, image.name);
-      });
-    }
-
-    Object.keys(formData).forEach(key => {
-      if (key === 'serviceTitle') {
-        formDataObj.append(key, toSlug(formData[key]));
-        return;
-      }
-      formDataObj.append(key, formData[key]);
-    });
-
-    mutation.mutate(formDataObj);
-  };
+  const {
+    register,
+    handleSubmit,
+    errors,
+    stepsFields,
+    onSubmit,
+    serviceImage,
+    setServiceImage,
+    worksImages,
+    setWorksImages
+  } = useAddServiceForm();
 
   return (
     <div className={styles.services}>
@@ -171,7 +51,7 @@ const AddService: React.FC = () => {
                 name="serviceTitle"
                 register={register}
                 error={typeof errors?.serviceTitle?.message === 'string' ? errors?.serviceTitle?.message : ''}
-                options={serviceTitleOptions}
+                options={validationRulesMinMax(2, 32)}
                 label="Service Title"
               />
               <Field
@@ -179,7 +59,7 @@ const AddService: React.FC = () => {
                 name="miniDescription"
                 register={register}
                 error={typeof errors?.miniDescription?.message === 'string' ? errors?.miniDescription?.message : ''}
-                options={miniDescriptionOptions}
+                options={validationRulesMinMax(16, 384)}
                 label="Mini description"
                 customClassName={adminStyles.textarea}
                 textarea
@@ -190,7 +70,7 @@ const AddService: React.FC = () => {
                   name="benefit_1"
                   register={register}
                   error={typeof errors?.benefit_1?.message === 'string' ? errors?.benefit_1?.message : ''}
-                  options={benefitOptions}
+                  options={validationRulesMinMax(4, 64)}
                   label="Benefit #1"
                 />
                 <Field
@@ -198,7 +78,7 @@ const AddService: React.FC = () => {
                   name="benefit_2"
                   register={register}
                   error={typeof errors?.benefit_2?.message === 'string' ? errors?.benefit_2?.message : ''}
-                  options={benefitOptions}
+                  options={validationRulesMinMax(4, 64)}
                   label="Benefit #2"
                 />
                 <Field
@@ -206,7 +86,7 @@ const AddService: React.FC = () => {
                   name="benefit_3"
                   register={register}
                   error={typeof errors?.benefit_3?.message === 'string' ? errors?.benefit_3?.message : ''}
-                  options={benefitOptions}
+                  options={validationRulesMinMax(4, 64)}
                   label="Benefit #3"
                 />
                 <Field
@@ -214,7 +94,7 @@ const AddService: React.FC = () => {
                   name="benefit_4"
                   register={register}
                   error={typeof errors?.benefit_4?.message === 'string' ? errors?.benefit_4?.message : ''}
-                  options={benefitOptions}
+                  options={validationRulesMinMax(4, 64)}
                   label="Benefit #4"
                 />
               </ul>
@@ -246,7 +126,7 @@ const AddService: React.FC = () => {
             {stepsFields.map((step) => (
               <div className={`${stepsStyles.step} ${stepsStyles.stepAdmin}`} key={step.title.name}>
                 <div className={`iconBorder ${stepsStyles.iconBorder}`}>
-                  <ServicesSvgSelector iconId="star-2"/>
+                  <ServicesSvgSelector iconId="star-step"/>
                 </div>
                 <Field
                   placeholder={step.title.placeholder}
@@ -285,7 +165,7 @@ const AddService: React.FC = () => {
             name="projectDescription"
             register={register}
             error={typeof errors?.projectDescription?.message === 'string' ? errors?.projectDescription?.message : ''}
-            options={projectDescriptionOptions}
+            options={validationRulesMinMax(32, 1024)}
             label="Projects Description"
             textarea
             customClassName={projectsStyles.projectDescription}
@@ -333,7 +213,7 @@ const AddService: React.FC = () => {
             name="feedbackAuthor"
             register={register}
             error={typeof errors?.feedbackAuthor?.message === 'string' ? errors?.feedbackAuthor?.message : ''}
-            options={feedbackAuthorOptions}
+            options={validationRulesMinMax(4, 32)}
             label="Feedback Author"
             customClassName={adminStyles.fieldFullWidth}
           />
@@ -342,7 +222,7 @@ const AddService: React.FC = () => {
             name="feedbackText"
             register={register}
             error={typeof errors?.feedbackText?.message === 'string' ? errors?.feedbackText?.message : ''}
-            options={feedbackTextOptions}
+            options={validationRulesMinMax(32, 1024)}
             label="Feedback Text"
             textarea
             customClassName={adminStyles.feedbackText}

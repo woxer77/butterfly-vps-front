@@ -3,10 +3,10 @@ import React from 'react';
 // services tick
 import { ReactComponent as Tick } from './tick.svg';
 // services feedback star
-import { ReactComponent as Star } from './star.svg';
+import { ReactComponent as StarFeedback } from './star.svg';
 // services info star
-import { ReactComponent as Star2 } from './star-2.svg';
-
+import { ReactComponent as StarStep } from './star-2.svg';
+// services icons
 import { ReactComponent as IndoorBranding } from './indoor-branding.svg';
 import { ReactComponent as OutdoorBranding } from './outdoor-branding.svg';
 import { ReactComponent as BuildingWrapping } from './building-wrapping.svg';
@@ -20,7 +20,6 @@ import { ReactComponent as BarRestaurantRenovations } from './bar-restaurant-ren
 import { ReactComponent as Identity } from './identity.svg';
 import { ReactComponent as PrintingRoboticMilling3D } from './3d-printing-robotic-milling.svg';
 
-
 import { SvgSelector } from "../../../../ts/interfaces/types";
 
 const ServicesSvgSelector: React.FC<SvgSelector> = ({ iconId, ...props }) => {
@@ -28,11 +27,11 @@ const ServicesSvgSelector: React.FC<SvgSelector> = ({ iconId, ...props }) => {
     case 'tick':
       return <Tick {...props} />;
 
-    case 'star':
-      return <Star {...props} />;
+    case 'star-feedback':
+      return <StarFeedback {...props} />;
 
-    case 'star-2':
-      return <Star2 {...props} />;
+    case 'star-step':
+      return <StarStep {...props} />;
 
     case 'indoor-branding':
       return <IndoorBranding {...props} />;

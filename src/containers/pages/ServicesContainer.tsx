@@ -13,7 +13,7 @@ import { useAppSelector } from "../../hooks/common/redux";
 const ServicesContainer = () => {
   const services = useAppSelector(state => state.userReducer.services);
   const servicesId = services.map(service => service.serviceId);
-  let { serviceId } = useParams();
+  const { serviceId } = useParams();
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['getServiceById', serviceId],

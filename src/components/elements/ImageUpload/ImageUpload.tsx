@@ -1,11 +1,6 @@
-import React, { MutableRefObject } from 'react';
+import React from 'react';
 
-import { useMutation } from '@tanstack/react-query';
-
-import { uploadImage } from '../../../services/admin';
 import { FILE_TYPE_IMAGE, MAX_UPLOAD_IMAGE_SIZE } from "../../../configs/config";
-
-import styles from './ImageUpload.module.scss';
 
 interface ImageUploadProps {
   images: File[] | null;
@@ -15,7 +10,7 @@ interface ImageUploadProps {
   customClassName?: string;
 }
 
-const ImageUpload: React.FC<ImageUploadProps> = ({ images, setImages, multiple, maxCount, customClassName }) => {
+const ImageUpload: React.FC<ImageUploadProps> = ({ setImages, multiple, maxCount, customClassName }) => {
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

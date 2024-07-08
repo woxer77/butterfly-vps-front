@@ -35,16 +35,36 @@ const SideMenu: React.FC<SideMenuProps> = ({ isMenuActive, setIsMenuActive }) =>
     setIsMenuActive(false);
   };
 
+  const sideMenuRef = React.useRef<HTMLDivElement | null>(null);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (sideMenuRef.current && !sideMenuRef.current.contains(event.target as Node)) {
+      closeMenu();
+    }
+  };
+
+  React.useEffect(() => {
+    if (isMenuActive) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMenuActive]);
+
   return (
-    <div className={styles.sideMenu} style={sideMenuStyles}>
-      <div className={styles.cross} onClick={closeMenu}>
-        <div className={styles.line} id={styles.line1}/>
-        <div className={styles.line} id={styles.line2}/>
+    <div className={styles.sideMenu} style={sideMenuStyles} ref={sideMenuRef}>
+      <div className={`cross ${styles.cross}`} onClick={closeMenu}>
+        <div className={`line ${styles.line}`} id="line1"/>
+        <div className={`line ${styles.line}`} id="line2"/>
       </div>
       <nav className={styles.nav}>
         <div className={styles.wrapper}>
           {servicesId.map((id, index) => (
-            <React.Fragment key={index}>
+            <React.Fragment key={`side-${id}-${index}`}>
               <Link
                 to={`/services/${id}`}
                 className={styles.service}

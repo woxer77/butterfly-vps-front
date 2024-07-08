@@ -4,10 +4,15 @@
   padding: 0 $page-padding $page-padding $page-padding;
 
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   column-gap: 40px;
   row-gap: 100px;
+
+  .WIPwrapper {
+    //height: 100%;
+    margin-top: -300px;
+    width: 100%;
+  }
 
   .work {
     height: 540px;
@@ -93,6 +98,11 @@
 
         .date {
           font-size: 16px;
+          opacity: 0.5;
+        }
+
+        .location {
+          margin-left: 10px;
           opacity: 0.5;
         }
       }

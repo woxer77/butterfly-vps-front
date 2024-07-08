@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { useMutation } from "@tanstack/react-query";
 
 import Button from "../../UI/Button/Button";
@@ -10,14 +10,16 @@ import { ButtonTypeEnum, ButtonVariantEnum } from "../../../ts/enums/enums";
 import { useAppDispatch, useAppSelector } from "../../../hooks/common/redux";
 import { logout } from "../../../services/admin";
 import { resetAll as resetAdmin } from "../../../redux/slices/adminSlice";
+import { SELECTED_COLOR } from "../../../configs/config";
 
 import styles from './Header.module.scss';
 
 const Header: React.FC = () => {
-  const isAuth = useAppSelector(state => state.adminReducer.isAuth);
-  const adminId = useAppSelector(state => state.adminReducer.adminId);
+  const admin = useAppSelector(state => state.adminReducer);
   const services = useAppSelector(state => state.userReducer.services);
   const servicesId = services.map(service => service.serviceId);
+
+  const { serviceId } = useParams();
 
   const dispatch = useAppDispatch();
 
@@ -38,10 +40,10 @@ const Header: React.FC = () => {
       name: 'Services',
       to: `/services/${servicesId[0]}`,
     },
-    /*{
+    {
       name: 'Projects',
       to: '/projects'
-    }*/
+    }
   ];
 
   const deleteCookie = (name: string) => {
@@ -49,7 +51,7 @@ const Header: React.FC = () => {
   };
 
   const mutateHook = useMutation({
-    mutationKey: ['adminLogout', adminId],
+    mutationKey: ['adminLogout', admin.adminId],
     mutationFn: () => logout(),
     onSuccess: () => {
       localStorage.removeItem('token');
@@ -57,6 +59,7 @@ const Header: React.FC = () => {
       dispatch(resetAdmin());
     },
     onError: (error) => {
+      alert(error.message);
       console.log('Admin logout error:', error);
     }
   });
@@ -72,13 +75,14 @@ const Header: React.FC = () => {
           <NavLink
             to={page.to}
             className={({ isActive }) => isActive ? `${styles.navElem} selectedColor` : `${styles.navElem}`}
+            style={{ color: page.name === 'Services' && serviceId && servicesId.includes(serviceId) ? SELECTED_COLOR : '' }}
             key={page.to}
           >
             {page.name}
           </NavLink>
         ))}
       </nav>
-      {isAuth && (
+      {admin.isAuth && (
         <Button
           onClick={handleLogout}
           customClassName={styles.logout}
