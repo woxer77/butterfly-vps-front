@@ -1,4 +1,4 @@
-const DEVELOPMENT_STAGE: string = 'production';
+const DEVELOPMENT_STAGE: string = 'development';
 
 export const CAROUSEL_FAST_DURATION: number = 25;
 export const CAROUSEL_SLOW_DURATION: number = 75;

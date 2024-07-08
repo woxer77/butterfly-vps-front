@@ -3,6 +3,7 @@ import React from 'react';
 import { useMutation } from "@tanstack/react-query";
 
 import { deleteProject as deleteProjectFn } from "../../services/admin";
+import { handleReload } from "../../helpers/refreshPage";
 
 export const useDeleteProjectMutation = (initialProject: string) => {
   const [deleteProject, setDeleteProject] = React.useState(initialProject);
@@ -12,7 +13,7 @@ export const useDeleteProjectMutation = (initialProject: string) => {
     mutationFn: () => deleteProjectFn(deleteProject),
     onSuccess: (res) => {
       alert(res.data.message);
-      window.location.reload();
+      handleReload();
     },
     onError: (error) => {
       alert(error.message);

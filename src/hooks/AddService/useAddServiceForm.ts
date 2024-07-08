@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import { validationRulesMinMax, toSlug } from "../../helpers/Form/admin";
 import { addService } from "../../services/admin";
+import { handleReload } from "../../helpers/refreshPage";
 
 export const useAddServiceForm = () => {
   const { register, handleSubmit, formState: { errors }, getValues } = useForm({ mode: "onChange" });
@@ -79,7 +80,7 @@ export const useAddServiceForm = () => {
         navigate('/home');
       }
 
-      window.location.reload();
+      handleReload();
     },
     onError: (error) => {
       alert(error.message);

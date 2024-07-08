@@ -2,6 +2,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { addProject } from "../../services/admin";
+import { handleReload } from "../../helpers/refreshPage";
 
 export const useMutationLogic = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export const useMutationLogic = () => {
       alert(res.data.message);
       navigate('/projects');
 
-      window.location.reload();
+      handleReload();
     },
     onError: (error) => {
       alert(error.message);

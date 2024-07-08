@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { persistStore, persistReducer } from 'redux-persist';
+import { persistStore, persistReducer, FLUSH } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import adminReducer from './slices/adminSlice';
@@ -21,7 +21,9 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false,
+      serializableCheck: {
+        ignoredActions: [FLUSH],
+      },
     }),
 });
 export const persistor = persistStore(store);

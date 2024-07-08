@@ -10,7 +10,7 @@ import { useAppSelector } from "../../../../hooks/common/redux";
 import styles from './Philosophy.module.scss';
 
 const Philosophy: React.FC = () => {
-  const webp = useAppSelector((state) => state.userReducer.webp);
+  const webp = useAppSelector((state) => state.userReducer.webp); // TODO: когда флудить ф5 - крашит на About, Equipment, Projects. скорее всего из-за persistor в redux, переделать.
 
   const [activeTooltip, setActiveTooltip] = React.useState<number | null>(null);
 

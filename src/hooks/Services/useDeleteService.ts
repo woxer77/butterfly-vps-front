@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
 import { deleteService } from "../../services/admin";
+import { handleReload } from "../../helpers/refreshPage";
 
 export const useDeleteService = (serviceId: string | undefined) => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export const useDeleteService = (serviceId: string | undefined) => {
         navigate('/home');
       }
 
-      window.location.reload();
+      handleReload();
     },
     onError: (error) => {
       alert(error.message);
