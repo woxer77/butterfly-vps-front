@@ -3,17 +3,18 @@ import { useNavigate } from "react-router-dom";
 
 import { deleteService } from "../../services/admin";
 
-export const useDeleteService = (serviceId: string | undefined, servicesId: string[]) => {
+export const useDeleteService = (serviceId: string | undefined) => {
   const navigate = useNavigate();
 
   const mutation = useMutation({
     mutationKey: ['deleteService', serviceId],
     mutationFn: () => deleteService(serviceId),
     onSuccess: (res) => {
-      alert(res.data.message);
+      const { message, redirectToService } = res.data;
+      alert(message);
 
-      if (servicesId.length > 0){
-        navigate(`/services/${servicesId[0]}`);
+      if (redirectToService){
+        navigate(`/services/${redirectToService}`);
       } else {
         navigate('/home');
       }

@@ -36,7 +36,7 @@ const Services: React.FC<ServicesProps> = ({ service, servicesId, serviceId }) =
   const isAuth = useAppSelector((state) => state.adminReducer.isAuth);
 
   const { nextPage, prevPage } = useServiceNavigation(servicesId, serviceId);
-  const { handleDeleteService } = useDeleteService(serviceId, servicesId);
+  const { handleDeleteService } = useDeleteService(serviceId);
 
   const bgImage = webp ? '/services/webp/bg-rectangles-2.webp' : '/services/png/bg-rectangles-2.png';
 
