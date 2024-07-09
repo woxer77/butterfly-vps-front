@@ -3,10 +3,18 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { API_URL } from "../../configs/config";
 import apiClient from "../../configs/axios";
 import { AdminResponse, IAdmin } from "../../ts/interfaces/types";
+import { PURGE } from "redux-persist";
 
-const initialState: IAdmin = {
+interface AdminSliceInitialState extends IAdmin {
+  loading: boolean;
+  error: string | undefined;
+}
+
+const initialState: AdminSliceInitialState = {
   adminId: null,
-  isAuth: false
+  isAuth: false,
+  loading: false,
+  error: ''
 };
 
 const adminSlice = createSlice({
@@ -20,6 +28,27 @@ const adminSlice = createSlice({
       state.adminId = action.payload;
     },
     resetAll: () => initialState
+  },
+  extraReducers: (builder) => {
+    builder.addCase(PURGE, () => initialState);
+    builder.addCase(checkAuth.pending, (state) => {
+      state.loading = true;
+      state.error = '';
+      state.isAuth = false;
+      state.adminId = null;
+    });
+    builder.addCase(checkAuth.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = '';
+      state.isAuth = true;
+      state.adminId = action.payload;
+    });
+    builder.addCase(checkAuth.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message;
+      state.isAuth = false;
+      state.adminId = null;
+    });
   }
 });
 
@@ -32,7 +61,7 @@ export const checkAuth = createAsyncThunk(
 
       localStorage.setItem('token', accessToken);
 
-      return admin;
+      return admin.adminId;
     } catch (e) {
       console.log(e);
       throw e;
