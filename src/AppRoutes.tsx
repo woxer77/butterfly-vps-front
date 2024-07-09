@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 import ProtectedRoute from "./components/elements/ProtectedRoute/ProtectedRoute";
+import Layout from "./components/elements/Layout/Layout";
 
 import useLazy from "./hooks/common/useLazy";
 import { useAppDispatch } from "./hooks/common/redux";
@@ -12,7 +13,7 @@ import { setServices, setWebp } from "./redux/slices/userSlice";
 import { getAllServices } from "./services/user";
 import { IServiceRedux } from "./ts/interfaces/types";
 import { checkAuth } from "./redux/slices/adminSlice";
-import Layout from "./components/elements/Layout/Layout";
+import { debounce } from "lodash";
 
 const AppRoutes: React.FC = () => {
   const HomeLazy = useLazy(() => import("./components/pages/Home/Home"));
@@ -100,10 +101,16 @@ const AppRoutes: React.FC = () => {
     dispatch(setServices(servicesRedux));
   }, [isLoading, isError, servicesRedux]);
 
-  React.useEffect(() => {
+  const debouncedCheckAuth = debounce(() => {
     if (localStorage.getItem('token')) {
       dispatch(checkAuth());
     }
+  }, 1000);
+
+  React.useEffect(() => {
+    debouncedCheckAuth();
+
+    return () => debouncedCheckAuth.cancel();
   }, []);
 
   return (

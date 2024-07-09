@@ -5,21 +5,21 @@ import { useMutation } from "@tanstack/react-query";
 import { deleteProject as deleteProjectFn } from "../../services/admin";
 import { handleReload } from "../../helpers/refreshPage";
 
-export const useDeleteProjectMutation = (initialProject: string) => {
-  const [deleteProject, setDeleteProject] = React.useState(initialProject);
+export const useDeleteProjectMutation = () => {
+  const [selectedProject, setSelectedProject] = React.useState<string>('');
 
   const mutation = useMutation({
-    mutationKey: ['deleteProject', deleteProject],
-    mutationFn: () => deleteProjectFn(deleteProject),
+    mutationKey: ['deleteProject', selectedProject],
+    mutationFn: () => deleteProjectFn(selectedProject),
     onSuccess: (res) => {
       alert(res.data.message);
       handleReload();
     },
     onError: (error) => {
       alert(error.message);
-      console.log('Admin logout error:', error);
+      console.log(error);
     }
   });
 
-  return { setDeleteProject, mutation };
+  return { setSelectedProject, mutation };
 };

@@ -30,13 +30,20 @@ const Projects: React.FC = () => {
   const filters = ['All', ...servicesId];
 
   const { showModal, openModal, closeModal } = useModal(false);
-  const { setDeleteProject, mutation } = useDeleteProjectMutation(projectsIdSlug[0]);
+
+  const { setSelectedProject, mutation } = useDeleteProjectMutation();
 
   const [currentFilter, setCurrentFilter] = React.useState<string>(filters[0]);
 
   const bgImage1 = webp ? "/services/webp/bg-rectangles-1.webp" : "/services/png/bg-rectangles-1.png";
   const bgImage2 = webp ? "/services/webp/bg-rectangles-3.webp" : "/services/png/bg-rectangles-3.png";
   const bgImage3 = webp ? "/services/webp/bg-rectangles-4.webp" : "/services/png/bg-rectangles-4.png";
+
+  React.useEffect(() => {
+    if (projectsIdSlug.length > 0) {
+      setSelectedProject(projectsIdSlug[0]);
+    }
+  }, [projectsIdSlug]);
 
   const changeFilter = (filter: string) => {
     setCurrentFilter(filter);
@@ -59,7 +66,7 @@ const Projects: React.FC = () => {
           options={projectsId}
           values={projectsIdSlug}
           label="Select the name of the project to be deleted"
-          onValueChange={(value) => setDeleteProject(value)}
+          onValueChange={(value) => setSelectedProject(value)}
         />
         <Button variant={ButtonVariantEnum.Filled} type={ButtonTypeEnum.Submit} onClick={handleDeleteProject}>
           Delete project

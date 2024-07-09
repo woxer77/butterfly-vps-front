@@ -24,7 +24,7 @@ export const useDeleteService = (serviceId: string | undefined) => {
     },
     onError: (error) => {
       alert(error.message);
-      console.log('Admin logout error:', error);
+      console.log(error);
     }
   });
 
