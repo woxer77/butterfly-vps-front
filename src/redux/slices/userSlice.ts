@@ -26,13 +26,12 @@ const userSlice = createSlice({
     },
     setProjectsId: (state, action: PayloadAction<string[]>) => {
       state.projectsId = action.payload;
-    },
-    resetAll: () => initialState
+    }
   }
 });
 
 export const {
-  setWebp, setServices, setProjectsId, resetAll
+  setWebp, setServices, setProjectsId
 } = userSlice.actions;
 
 export default userSlice.reducer;

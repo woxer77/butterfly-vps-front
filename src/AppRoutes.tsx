@@ -1,19 +1,14 @@
 import React from 'react';
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 
 import ProtectedRoute from "./components/elements/ProtectedRoute/ProtectedRoute";
 import Layout from "./components/elements/Layout/Layout";
 
 import useLazy from "./hooks/common/useLazy";
-import { useAppDispatch } from "./hooks/common/redux";
-import useWebpSupport from "./hooks/common/useWebpSupport";
-import { setServices, setWebp } from "./redux/slices/userSlice";
-import { getAllServices } from "./services/user";
-import { IServiceRedux } from "./ts/interfaces/types";
-import { checkAuth } from "./redux/slices/adminSlice";
-import { debounce } from "lodash";
+import { useWebpSupportAndSet } from "./hooks/AppRoutes/useWebpSupportAndSet";
+import { useGetAllServices } from "./hooks/AppRoutes/useGetAllServices";
+import { useCheckAuth } from "./hooks/AppRoutes/useCheckAuth";
 
 const AppRoutes: React.FC = () => {
   const HomeLazy = useLazy(() => import("./components/pages/Home/Home"));
@@ -81,37 +76,9 @@ const AppRoutes: React.FC = () => {
     },
   ]);
 
-  const dispatch = useAppDispatch();
-  const isWebpSupported = useWebpSupport();
-
-  React.useEffect(() => {
-    dispatch(setWebp(isWebpSupported));
-  }, [isWebpSupported]);
-
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ['getAllServices'],
-    queryFn: () => getAllServices(),
-    refetchOnWindowFocus: false
-  });
-  const servicesRedux = data?.data as IServiceRedux[] || [];
-
-  React.useEffect(() => {
-    if (isLoading || isError) return;
-
-    dispatch(setServices(servicesRedux));
-  }, [isLoading, isError, servicesRedux]);
-
-  const debouncedCheckAuth = debounce(() => {
-    if (localStorage.getItem('token')) {
-      dispatch(checkAuth());
-    }
-  }, 1000);
-
-  React.useEffect(() => {
-    debouncedCheckAuth();
-
-    return () => debouncedCheckAuth.cancel();
-  }, []);
+  useWebpSupportAndSet();
+  useGetAllServices();
+  useCheckAuth();
 
   return (
     <RouterProvider router={router} />
