@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { motion } from 'framer-motion';
+import Spline from "@splinetool/react-spline";
 
 import Hero from "../../elements/Hero/Hero";
 import Services from "./Services/Services";
@@ -27,11 +28,7 @@ const Home: React.FC = () => {
       <Hero>
         <div className={styles.flexContainer}>
           <div className={styles.butterfly}>
-            <iframe
-              src='https://my.spline.design/untitled-74ec8c52393d8900bbed903123057edb/'
-              width='100%'
-              height='100%'/>
-            <div className={styles.antiBanner}/>
+            <Spline scene="https://prod.spline.design/San8rODPn-Nrtdsj/scene.splinecode" />
           </div>
           <div className={styles.textContainer}>
             <motion.p
