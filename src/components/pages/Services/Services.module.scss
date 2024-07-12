@@ -86,6 +86,16 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        .pageNumber {
+          font-weight: 700;
+          font-size: 32px;
+          margin: 0 32px;
+        }
+
+        button {
+          flex-shrink: 0;
+        }
       }
     }
 

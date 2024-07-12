@@ -90,6 +90,9 @@ const Services: React.FC<ServicesProps> = ({ service, servicesId, serviceId }) =
             </ul>
             <div className={styles.controls}>
               <SliderButton onClick={prevPage} type={SliderButtonTypeEnum.Prev}/>
+              <p className={styles.pageNumber}>
+                {servicesId.indexOf(serviceId as string) + 1}/{servicesId.length}
+              </p>
               <SliderButton onClick={nextPage} type={SliderButtonTypeEnum.Next}/>
             </div>
           </motion.div>

@@ -31,9 +31,7 @@ const Projects: React.FC<ProjectsProps> = ({ project }) => {
           if (!image) return;
           return (
           <div className={styles.imageWrapper} key={`project-${project.title}-image-${index}`}>
-            <div className={styles.overlay}>
-              WORK {index + 1}
-            </div>
+            <div className={styles.overlay}/>
             <img src={`${API_URL}/services/${image}`} alt={project.title} loading="lazy"/>
           </div>
           );
