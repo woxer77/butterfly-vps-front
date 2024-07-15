@@ -6,16 +6,18 @@ import SliderButton from "../../../UI/SliderButton/SliderButton";
 
 import { SliderButtonTypeEnum } from "../../../../ts/enums/enums";
 import { equipment, homeAnimations } from "../../../../configs/equipment";
-import { HOME_DELAY_BEFORE_ANIMATION, HOME_TRANSITION_ANIMATION } from "../../../../configs/config";
+import { HOME_DELAY_BEFORE_ANIMATION, HOME_TRANSITION_ANIMATION, MOBILE_WIDTH } from "../../../../configs/config";
 import { useAppSelector } from "../../../../hooks/common/redux";
 
 import styles from './Equipment.module.scss';
+import { useSwipeable } from "react-swipeable";
 
 const Equipment: React.FC = () => {
   const webp = useAppSelector((state) => state.userReducer.webp);
 
   const [position, setPosition] = React.useState<number>(0);
   const [isDisabled, setIsDisabled] = React.useState<boolean>(false);
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= MOBILE_WIDTH);
 
   const bgImage = webp ? "/home/webp/bg-rectangles-and-dots-2.webp" : "/home/png/bg-rectangles-and-dots-2.png";
 
@@ -27,21 +29,39 @@ const Equipment: React.FC = () => {
   };
 
   const nextSlide = () => {
-    if (isDisabled) return;
+    if (isDisabled || position + 1 > equipment.length - 1) return;
 
     setPosition(position + 1);
     disableButton();
   };
 
   const prevSlide = () => {
-    if (isDisabled) return;
+    if (isDisabled || position - 1 < 0) return;
 
     setPosition(position - 1);
     disableButton();
   };
 
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= MOBILE_WIDTH);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => nextSlide(),
+    onSwipedRight: () => prevSlide(),
+    trackMouse: true
+  });
+
   return (
-    <div className={styles.equipment}>
+    <div className={styles.equipment} {...handlers}>
       <img src={bgImage} alt="bg-rectangles-and-dots-2" className="bgObject" id={styles.bgObject} loading="lazy"/>
       <div className={styles.textBlock}>
         <p className={styles.description}>
@@ -60,29 +80,31 @@ const Equipment: React.FC = () => {
               {equipment[position].title}
             </motion.h2>
             <motion.p
-              animate={homeAnimations.descriptionMotion.animate}
-              initial={homeAnimations.descriptionMotion.initial}
-              exit={homeAnimations.descriptionMotion.exit}
-              transition={homeAnimations.descriptionMotion.transition}
+              animate={!isMobile ? homeAnimations.descriptionMotion.animate : homeAnimations.mobileDescriptionMotion.animate}
+              initial={!isMobile ? homeAnimations.descriptionMotion.initial : homeAnimations.mobileDescriptionMotion.initial}
+              exit={!isMobile ? homeAnimations.descriptionMotion.exit : homeAnimations.mobileDescriptionMotion.exit}
+              transition={!isMobile ? homeAnimations.descriptionMotion.transition : homeAnimations.mobileDescriptionMotion.transition}
               key={`equipment-description-${position}`}
-              className="text"
+              className={`text ${styles.text}`}
             >
               {equipment[position].description}
             </motion.p>
           </AnimatePresence>
         </div>
-        <div className={styles.controls}>
-          <SliderButton
-            onClick={prevSlide}
-            type={SliderButtonTypeEnum.Prev}
-            inactive={position === 0}
-          />
-          <SliderButton
-            onClick={nextSlide}
-            type={SliderButtonTypeEnum.Next}
-            inactive={position === equipment.length - 1}
-          />
-        </div>
+        {!isMobile && (
+          <div className={styles.controls}>
+            <SliderButton
+              onClick={prevSlide}
+              type={SliderButtonTypeEnum.Prev}
+              inactive={position === 0}
+            />
+            <SliderButton
+              onClick={nextSlide}
+              type={SliderButtonTypeEnum.Next}
+              inactive={position === equipment.length - 1}
+            />
+          </div>
+        )}
       </div>
       <AnimatePresence mode="wait">
         <motion.div
@@ -100,6 +122,20 @@ const Equipment: React.FC = () => {
           />
         </motion.div>
       </AnimatePresence>
+      {isMobile && (
+        <div className={styles.controls}>
+          <SliderButton
+            onClick={prevSlide}
+            type={SliderButtonTypeEnum.Prev}
+            inactive={position === 0}
+          />
+          <SliderButton
+            onClick={nextSlide}
+            type={SliderButtonTypeEnum.Next}
+            inactive={position === equipment.length - 1}
+          />
+        </div>
+      )}
     </div>
   );
 };

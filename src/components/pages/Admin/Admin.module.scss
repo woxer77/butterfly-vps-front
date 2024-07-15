@@ -3,7 +3,7 @@
 .admin {
   position: relative;
 
-  padding: $page-padding;
+  @include page-padding;
   margin: 60px auto 0 auto;
   @include centered-container;
 
@@ -13,7 +13,7 @@
   flex-direction: column;
 
   @media (max-width: 900px) {
-    padding: $page-padding / 2;
+    padding: $page-padding-desktop / 2;
   }
 
   .title {

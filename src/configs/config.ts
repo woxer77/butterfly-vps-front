@@ -26,3 +26,5 @@ export const MAX_UPLOAD_IMAGE_SIZE: number = 4000000; // 4 MB
 export const FILE_TYPE_IMAGE: string = 'image.*';
 
 export const SIDE_MENU_WIDTH: number = 340;
+
+export const MOBILE_WIDTH: number = 420;

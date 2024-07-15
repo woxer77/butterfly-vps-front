@@ -12,17 +12,37 @@
     top: 0;
     left: 70%;
     transform: translateX(-70%);
+
+    @media (max-width: $laptop-l-width) {
+      width: 637px;
+      height: 171px;
+    }
   }
 
   #bgObject2 {
     top: 50px;
     left: 0;
+
+    @media (max-width: $laptop-l-width) {
+      width: 342px;
+      height: 458px;
+    }
+
+    @media (max-width: 1200px) {
+      left: -50px;
+    }
   }
 
   #bgObject3 {
-    right: -$page-padding;
+    right: -$page-padding-desktop;
     bottom: -300px;
     transform: scaleX(-1);
+
+    @media (max-width: $laptop-l-width) {
+      right: 0;
+      width: 228px;
+      height: 292px;
+    }
   }
 
   .hero {
@@ -64,6 +84,10 @@
 
       text-transform: capitalize;
 
+      @media (max-width: 1200px) {
+        width: 600px;
+      }
+
       .filter {
         padding: 6px 12px;
 
@@ -85,11 +109,15 @@
 .adminButtonContainer {
   width: 400px;
   position: absolute;
-  left: $page-padding + $aside-socials-width;
+  left: $page-padding-desktop + $aside-socials-width;
   top: 0;
 
   display: flex;
   column-gap: 15px;
+
+  @media (max-width: $laptop-l-width) {
+    left: $page-padding-laptop + $aside-socials-width;
+  }
 }
 
 .adminButton {

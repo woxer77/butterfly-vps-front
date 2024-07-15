@@ -1,0 +1,93 @@
+@import "../../../assets/styles/scss/config-styles/vars";
+
+.mobileEquipment {
+  margin-top: 60px;
+  margin-bottom: 60px;
+
+  .title {
+    font-weight: 700;
+    font-size: 32px;
+    text-transform: uppercase;
+    text-align: center;
+
+    margin-bottom: 16px;
+    padding: 0 $page-padding-mobile;
+  }
+
+  .description {
+    font-size: 16px;
+    text-align: center;
+    opacity: 0.5;
+
+    margin-bottom: 60px;
+    padding: 0 $page-padding-mobile;
+  }
+
+  .slider {
+    display: flex;
+    column-gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    margin-bottom: 60px;
+    width: 100%;
+    height: 220px;
+    padding: 0 $page-padding-mobile;
+    max-width: 100vw;
+
+    .equipment {
+      width: 320px;
+      height: 100%;
+
+      padding: 20px 0;
+      flex-shrink: 0;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      row-gap: 16px;
+
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+
+      @media (max-width: 340px) {
+        width: 300px;
+      }
+
+      img {
+        height: 70px;
+      }
+
+      .equipmentTitle {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 140%;
+        text-align: center;
+      }
+
+      .equipmentDescription {
+        font-size: 16px;
+        line-height: 162%;
+        text-align: center;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .scrollBarContainer {
+    position: relative;
+    width: calc(100% - $page-padding-mobile * 2);
+    height: 4px;
+    margin: 0 $page-padding-mobile;
+    background-color: #7D8389;
+
+    .scrollBar {
+      display: block;
+      width: 10px;
+      height: 4px;
+      background-color: $selected-color;
+      //transition: width 0.1s;
+    }
+  }
+}

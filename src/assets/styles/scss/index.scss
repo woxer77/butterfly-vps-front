@@ -59,6 +59,7 @@ body, input, textarea, select, button, option {
   line-height: 143%;
 
   margin-bottom: 6px;
+  color: #A7BDD1;
 }
 
 .error {
@@ -85,6 +86,10 @@ body, input, textarea, select, button, option {
   font-size: 20px;
   letter-spacing: 0.01em;
   color: #fff;
+
+  @media (max-width: $laptop-l-width) {
+    font-size: 18px;
+  }
 }
 
 .iconBorder {

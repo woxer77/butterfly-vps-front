@@ -11,27 +11,27 @@ import { useGetAllServices } from "./hooks/AppRoutes/useGetAllServices";
 import { useCheckAuth } from "./hooks/AppRoutes/useCheckAuth";
 
 const AppRoutes: React.FC = () => {
-  const HomeLazy = useLazy(() => import("./components/pages/Home/Home"));
-  const AboutLazy = useLazy(() => import("./components/pages/About/About"));
-  const EquipmentLazy = useLazy(() => import("./components/pages/Equipment/Equipment"));
+  const HomeContainerLazy = useLazy(() => import("./containers/pages/HomeContainer"));
+  const AboutContainerLazy = useLazy(() => import("./containers/pages/AboutContainer"));
+  const EquipmentContainerLazy = useLazy(() => import("./containers/pages/EquipmentContainer"));
   const ServicesContainerLazy = useLazy(() => import("./containers/pages/ServicesContainer"));
-  const ProjectsLazy = useLazy(() => import("./components/pages/Projects/Projects"));
+  const ProjectsContainerLazy = useLazy(() => import("./containers/pages/ProjectsContainer"));
   const AdminLazy = useLazy(() => import("./components/pages/Admin/Admin"));
-  const AddServiceLazy = useLazy(() => import("./components/pages/AddService/AddService"));
-  const AddProjectLazy = useLazy(() => import("./components/pages/AddProject/AddProject"));
+  const AddServiceContainerLazy = useLazy(() => import("./containers/pages/AddServiceContainer"));
+  const AddProjectContainerLazy = useLazy(() => import("./containers/pages/AddProjectContainer"));
 
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <HomeLazy/>,
+      element: <HomeContainerLazy/>,
     },
     {
       path: "/about",
-      element: <AboutLazy/>,
+      element: <AboutContainerLazy/>,
     },
     {
       path: "/equipment",
-      element: <EquipmentLazy/>,
+      element: <EquipmentContainerLazy/>,
     },
     {
       path: "/services/:serviceId",
@@ -48,13 +48,13 @@ const AppRoutes: React.FC = () => {
           path: "/add-service",
           element: (
             <Layout>
-              <AddServiceLazy />
+              <AddServiceContainerLazy />
             </Layout>
           ),
         },
         {
           path: "/add-project",
-          element: <AddProjectLazy />,
+          element: <AddProjectContainerLazy />,
         },
         {
           path: "*",
@@ -64,7 +64,7 @@ const AppRoutes: React.FC = () => {
     },
     {
       path: "/projects",
-      element: <ProjectsLazy/>,
+      element: <ProjectsContainerLazy/>,
     },
     {
       path: "/admin",

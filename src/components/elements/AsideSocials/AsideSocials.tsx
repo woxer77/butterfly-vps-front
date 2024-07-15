@@ -11,15 +11,17 @@ import styles from './AsideSocials.module.scss';
 
 interface AsideSocialsProps {
   setIsMenuActive: (isActive: boolean) => void;
+  customClassName?: string;
 }
 
-const AsideSocials: React.FC<AsideSocialsProps> = ({ setIsMenuActive }) => {
+const AsideSocials: React.FC<AsideSocialsProps> = ({ setIsMenuActive, customClassName }) => {
   const activateMenu = () => {
     setIsMenuActive(true);
   }
+  const asideSocialsStyles = customClassName ? `${styles.container} ${customClassName}` : styles.container;
 
   return (
-    <div className={styles.container}>
+    <div className={asideSocialsStyles}>
       <div className={styles.socials}>
         <Burger onClick={activateMenu}/>
         <div className={styles.icons}>

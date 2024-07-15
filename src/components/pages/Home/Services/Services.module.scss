@@ -4,6 +4,10 @@
   position: relative;
   height: 680px;
 
+  @media (max-width: $laptop-l-width) {
+    height: 510px;
+  }
+
   .carousel {
     position: absolute;
     display: flex;
@@ -21,6 +25,11 @@
         overflow: hidden;
 
         border-radius: 20px;
+
+        @media (max-width: $laptop-l-width) {
+          width: 438px;
+          height: 285px;
+        }
 
         &:hover {
           img {
@@ -46,6 +55,10 @@
         font-size: 20px;
         line-height: 150%;
         text-transform: uppercase;
+
+        @media (max-width: $laptop-l-width) {
+          font-size: 16px;
+        }
       }
     }
   }

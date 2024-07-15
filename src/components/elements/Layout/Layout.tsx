@@ -16,7 +16,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className={styles.layout}>
       <Header/>
-      <AsideSocials setIsMenuActive={setIsMenuActive}/>
+      <AsideSocials setIsMenuActive={setIsMenuActive} customClassName="asideSocials"/>
       <SideMenu isMenuActive={isMenuActive} setIsMenuActive={setIsMenuActive}/>
       {children}
     </div>

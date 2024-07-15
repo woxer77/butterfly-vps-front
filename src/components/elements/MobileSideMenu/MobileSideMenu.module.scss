@@ -1,0 +1,58 @@
+@import "../../../assets/styles/scss/config-styles/vars";
+
+.mobileSideMenu {
+  display: none;
+
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  left: -100%;
+  overflow: hidden;
+
+  backdrop-filter: blur(60px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%);
+
+  z-index: 10;
+
+  transition: opacity 0.3s, visibility 0.5s, left 0.5s;
+
+  @media (max-width: $mobile-width) {
+    display: block;
+  }
+
+  .nav {
+    height: calc(100% - $nav-margin-top * 2);
+    margin-top: 104px;
+    padding: 0 20px 36px 20px;
+
+    overflow-y: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 32px;
+
+      .link {
+        color: $default-text-color;
+
+        font-size: 24px;
+        outline: none;
+        white-space: nowrap;
+
+        transition: color 0.3s;
+
+        &:hover {
+          color: $selected-color;
+        }
+      }
+    }
+  }
+}

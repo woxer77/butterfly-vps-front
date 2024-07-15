@@ -1,3 +1,5 @@
+@import "../../../../assets/styles/scss/config-styles/vars";
+
 .steps {
   display: flex;
   flex-direction: column;
@@ -5,9 +7,15 @@
   justify-content: center;
 
   margin-bottom: 140px;
+  padding: 0 $page-padding-desktop;
+
+  @media (max-width: $laptop-l-width) {
+    padding: 0 $page-padding-laptop;
+  }
 
   .title {
     margin-bottom: 24px;
+    text-align: center;
   }
 
   .stepsList {
@@ -24,6 +32,7 @@
       justify-content: space-between;
       align-items: center;
 
+      width: 300px;
       max-width: 330px;
 
       .iconBorder {
@@ -54,7 +63,7 @@
 .stepAdmin {
   width: 400px !important;
 
-  input, textarea {
-    //w
+  @media (max-width: $laptop-width) {
+    width: 200px !important;
   }
 }

@@ -53,7 +53,7 @@ const Projects: React.FC = () => {
     // eslint-disable-next-line no-restricted-globals
     const userResponse = confirm("Are you sure you want to delete this project?");
     if (userResponse) {
-      mutation.mutate();
+      mutation.mutate(projectsIdSlug[0]);
     }
   }
 

@@ -1,0 +1,76 @@
+@import "../../../assets/styles/scss/config-styles/vars";
+
+.mobileAddProject {
+  form {
+    .content {
+      position: relative;
+
+      width: 100%;
+      //height: calc($aside-socials-height - $header-height);
+      @include page-padding;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+
+      .textBlock {
+        width: 100%;
+        max-width: 600px;
+
+        .textarea {
+          resize: vertical;
+          min-height: 160px;
+          max-height: 300px;
+        }
+      }
+
+      .imageWrapper {
+        width: 100%;
+        //min-width: 450px;
+        height: auto !important;
+        border-radius: 0 !important;
+        position: relative;
+
+        p {
+          width: 100%;
+          text-align: left;
+          margin-bottom: 10px;
+        }
+
+        button {
+          margin-bottom: 10px;
+        }
+
+        .imagePlace {
+          height: 300px;
+
+          background-color: #dedede;
+          border-radius: 20px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            border-radius: 20px;
+          }
+        }
+
+        /*button {
+          width: 100%;
+          height: 100%;
+
+          font-size: 24px;
+        }*/
+      }
+    }
+
+    .addServiceButton {
+      width: 94%;
+      margin: 0 auto;
+      font-size: 16px;
+      padding: 6px 0;
+    }
+  }
+}

@@ -8,6 +8,7 @@ import { useAppSelector } from "../../../hooks/common/redux";
 import { fromSlug } from "../../../helpers/Form/admin";
 import { SIDE_MENU_WIDTH } from "../../../configs/config";
 import { getIconId } from "../../../helpers/iconHelpers";
+import { TEMP_iconsId as iconsId } from "../../../configs/TEMP_service_icons";
 
 import styles from './SideMenu.module.scss';
 
@@ -19,11 +20,6 @@ interface SideMenuProps {
 const SideMenu: React.FC<SideMenuProps> = ({ isMenuActive, setIsMenuActive }) => {
   const services = useAppSelector(state => state.userReducer.services);
   const servicesId = services.map(service => service.serviceId);
-
-  // temp system
-  const iconsId = ['indoor-branding', 'outdoor-branding', 'building-wrapping', 'vehicle-wrapping', 'event-branding',
-    'exhibition', 'menu-design', 'interior-design', '3d-signage', 'bar-and-restaurants-renovation',
-    'identity', '3d-printing-and-robotic-milling'];
 
   const sideMenuStyles: CSSProperties = {
     opacity: isMenuActive ? 1 : 0,

@@ -16,11 +16,27 @@ $header-height: 146px;
 $full-hd-width: 1920px;
 $laptop-l-width: 1440px;
 $laptop-width: 1024px;
+$tablet-width: 768px;
+$mobile-width: 420px;
 
-$page-padding: 60px;
+$page-padding-desktop: 60px;
+$page-padding-laptop: 40px;
+$page-padding-mobile: 12px;
 
 $nav-margin-top: 72px;
 $side-menu-width: 340px;
+
+@mixin page-padding {
+  padding: $page-padding-desktop;
+
+  @media (max-width: $laptop-l-width) {
+    padding: $page-padding-laptop;
+  }
+
+  @media (max-width: $mobile-width) {
+    padding: $page-padding-mobile;
+  }
+}
 
 @mixin main-container {
   width: 100%;

@@ -4,6 +4,7 @@ import Button from "../../../UI/Button/Button";
 
 import { ButtonTypeEnum, ButtonVariantEnum } from "../../../../ts/enums/enums";
 import { useAppSelector } from "../../../../hooks/common/redux";
+import { companyInfo } from "../../../../configs/company-info";
 
 import styles from './About.module.scss';
 
@@ -11,21 +12,6 @@ const About: React.FC = () => {
   const webp = useAppSelector((state) => state.userReducer.webp);
 
   const bgImage = webp ? "/home/webp/office-bg.webp" : "/home/png/office-bg.png";
-
-  const companyInfo = [
-    {
-      number: '20x',
-      name: 'Faster Updates'
-    },
-    {
-      number: '1000+',
-      name: 'Employees'
-    },
-    {
-      number: '80%',
-      name: 'FasterLoad'
-    }
-  ];
 
   return (
     <div className={styles.aboutWrapper} style={{ backgroundImage: `url(${bgImage})` }}>

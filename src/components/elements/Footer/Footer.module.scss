@@ -3,8 +3,12 @@
 .footer {
   width: 100%;
   height: 400px;
-  padding: $page-padding;
+  @include page-padding;
   @include centered-container;
+
+  @media (max-width: $mobile-width) {
+    margin-bottom: 60px;
+  }
 
   .info {
     max-width: 900px;
@@ -20,14 +24,30 @@
     .text {
       font-size: 20px;
       text-align: center;
+
+      @media (max-width: $mobile-width) {
+        font-size: 16px;
+        text-align: center;
+        opacity: 0.5;
+      }
     }
 
     .row {
       display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
       column-gap: 35px;
 
       .text {
         font-size: 16px !important;
+
+        @media (max-width: $mobile-width) {
+          font-size: 16px;
+          line-height: 250%;
+          letter-spacing: -0.01em;
+          opacity: 1;
+        }
       }
     }
 
@@ -46,46 +66,4 @@
       }
     }
   }
-
-  /*.info {
-    max-width: 250px;
-
-    display: flex;
-    flex-direction: column;
-
-    &:last-child {
-      .text {
-        margin-bottom: 20px;
-      }
-    }
-
-    .logo {
-      margin-bottom: 30px;
-    }
-
-    .text {
-      font-size: 16px;
-    }
-
-    .title {
-      font-size: 24px;
-      line-height: 100%;
-      margin-bottom: 30px;
-    }
-
-    .socials {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      column-gap: 16px;
-
-      .icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        outline: none;
-      }
-    }
-  }*/
 }

@@ -9,7 +9,7 @@
     position: relative;
 
     @include centered-container;
-    padding: $page-padding;
+    @include page-padding;
 
     #bgObject {
       top: -200px;
@@ -20,8 +20,10 @@
 
       opacity: 0.5;
 
-      @media screen and (max-width: $laptop-l-width) {
-        top: -250px;
+      @media (max-width: $laptop-l-width) {
+        top: -180px;
+        width: 920px;
+        height: 657px;
       }
     }
 
@@ -31,6 +33,10 @@
 
       margin-top: 400px;
 
+      @media (max-width: $laptop-l-width) {
+        margin-top: 290px;
+      }
+
       .left {
         display: flex;
         align-items: flex-end;
@@ -38,6 +44,10 @@
 
         .text {
           width: 584px;
+
+          @media (max-width: $laptop-l-width) {
+            width: 531px;
+          }
         }
 
         .exploreBtn {
@@ -53,6 +63,10 @@
           cursor: pointer;
 
           transition: border-bottom 0.3s;
+
+          @media (max-width: $laptop-l-width) {
+            font-size: 24px;
+          }
 
           &:hover {
             border-bottom: 1px solid $selected-color;
@@ -76,6 +90,7 @@
             color: $default-text-color;
             font-size: 32px;
             text-transform: capitalize;
+            flex-shrink: 0;
 
             transition: padding-bottom 0.3s, color 0.3s;
           }
@@ -84,6 +99,7 @@
             width: 60px;
             height: 60px;
             padding-bottom: 20px;
+            flex-shrink: 0;
 
             transition: rotate 0.3s;
 
@@ -100,12 +116,21 @@
         display: flex;
         flex-direction: column;
 
+        @media (max-width: $laptop-l-width) {
+          width: 200px;
+          margin-left: 20px;
+        }
+
         .bigText {
           font-weight: 700;
           font-size: 100px;
           line-height: 0.9;
           text-transform: uppercase;
           text-align: right;
+
+          @media (max-width: $laptop-l-width) {
+            font-size: 70px;
+          }
         }
 
         .smallText {
@@ -113,6 +138,10 @@
           font-size: 40px;
           text-align: center;
           text-transform: lowercase;
+
+          @media (max-width: $laptop-l-width) {
+            font-size: 30px;
+          }
         }
       }
     }
@@ -124,32 +153,53 @@
     height: 300px;
     margin-top: 200px;
 
+    @media (max-width: $laptop-l-width) {
+      margin-top: 120px;
+    }
+
     .title {
       margin-bottom: 120px;
+
+      padding: 0 $page-padding-desktop;
+
+      @media (max-width: $laptop-l-width) {
+        padding: 0 $page-padding-laptop;
+      }
     }
 
-    .clientsCarousel {
-      position: absolute;
-
+    .clientsCarouselWrapper {
+      position: relative;
       height: 80px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      column-gap: 100px;
-    }
+      .clientsCarousel {
+        position: absolute;
 
-    .shadow {
-      position: absolute;
-      left: -60px;
-      bottom: 0;
+        height: 100%;
 
-      width: calc(100% + $page-padding * 2);
-      height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 100px;
+      }
 
-      box-shadow: inset -100px 0px 50px 5px $default-bg-color, inset 100px 0px 50px 5px $default-bg-color;
+      .shadow {
+        position: absolute;
+        left: -60px;
+        top: 50%;
+        transform: translateY(-50%);
 
-      z-index: 10;
+        width: calc(100% + $page-padding-desktop * 2);
+        height: 120px;
+
+        box-shadow: inset -100px 0px 50px 5px $default-bg-color, inset 100px 0px 50px 5px $default-bg-color;
+
+        z-index: 10;
+
+        @media (max-width: $laptop-l-width) {
+          left: -40px;
+          width: calc(100% + $page-padding-laptop * 2);
+        }
+      }
     }
   }
 }

@@ -6,10 +6,14 @@
   @include centered-container;
 
   .hero {
-    width: calc(100% - $page-padding - $aside-socials-width);
+    width: calc(100% - $page-padding-desktop - $aside-socials-width);
 
     position: absolute;
     left: $aside-socials-width;
     top: $header-height;
+
+    @media (max-width: $laptop-l-width) {
+      width: calc(100% - $page-padding-laptop - $aside-socials-width);
+    }
   }
 }

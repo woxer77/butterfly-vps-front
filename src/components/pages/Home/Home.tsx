@@ -33,6 +33,7 @@ const Home: React.FC = () => {
           <div className={styles.textContainer}>
             <motion.p
               className={styles.bigText}
+              id={styles.crafting}
               variants={variants}
               initial="hidden"
               animate="visible"
@@ -42,6 +43,7 @@ const Home: React.FC = () => {
             </motion.p>
             <motion.p
               className={styles.smallText}
+              id={styles.stories}
               variants={variants}
               initial="hidden"
               animate="visible"
@@ -49,34 +51,34 @@ const Home: React.FC = () => {
             >
               Stories
             </motion.p>
-            <div className={styles.row}>
-              <motion.div
-                variants={variants}
-                initial="hidden"
-                animate="visible"
-                transition={{ delay: 2.2, duration: 0.5 }}
+            <motion.div
+              variants={variants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 2.2, duration: 0.5 }}
+            >
+              <Button
+                variant={ButtonVariantEnum.Outlined}
+                type={ButtonTypeEnum.Button}
+                customClassName={styles.button}
+                onClick={goToContact}
               >
-                <Button
-                  variant={ButtonVariantEnum.Outlined}
-                  type={ButtonTypeEnum.Button}
-                  customClassName={styles.button}
-                  onClick={goToContact}
-                >
-                  Contact Us
-                </Button>
-              </motion.div>
-              <motion.p
-                className={styles.smallText}
-                variants={variants}
-                initial="hidden"
-                animate="visible"
-                transition={{ delay: 1.6, duration: 1 }}
-              >
-                Brands
-              </motion.p>
-            </div>
+                Contact Us
+              </Button>
+            </motion.div>
+            <motion.p
+              className={styles.smallText}
+              id={styles.brands}
+              variants={variants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 1.6, duration: 1 }}
+            >
+              Brands
+            </motion.p>
             <motion.p
               className={styles.bigText}
+              id={styles.building}
               variants={variants}
               initial="hidden"
               animate="visible"

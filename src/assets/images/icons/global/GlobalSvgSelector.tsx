@@ -3,6 +3,7 @@ import React from 'react';
 // socials
 import { ReactComponent as Facebook } from './facebook.svg';
 import { ReactComponent as Instagram } from './instagram.svg';
+import { ReactComponent as InstagramFilled } from './instagram-filled.svg';
 import { ReactComponent as Whatsapp } from './whatsapp.svg';
 // main logo
 import { ReactComponent as Logo } from './logo.svg';
@@ -20,6 +21,8 @@ const GlobalSvgSelector: React.FC<SvgSelector> = ({ iconId, ...props }) => {
       return <Facebook {...props} />;
     case 'instagram':
       return <Instagram {...props} />;
+    case 'instagram-filled':
+      return <InstagramFilled {...props} />;
     case 'whatsapp':
       return <Whatsapp {...props} />
 

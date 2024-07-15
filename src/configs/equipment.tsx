@@ -128,31 +128,6 @@ export const equipment: Equipment[] = [
     },
   },
   {
-    title: 'Plotter Machine',
-    description: 'A plotter machine is a type of printer used primarily for printing vector graphics. Unlike regular printers that print using a series of dots, plotters draw continuous lines, making them ideal for high-precision tasks such as engineering drawings, architectural plans, and detailed maps.',
-    miniDescription: 'High-precision vector graphics',
-    moreInfo: () => (
-      <>
-        <p>A plotter machine is a type of printer used primarily for printing vector graphics. Unlike regular printers
-          that print using a series of dots, plotters draw continuous lines, making them ideal for high-precision tasks
-          such as engineering drawings, architectural plans, and detailed maps.</p><br/>
-        <p>There are different types of plotters:</p><br/>
-        <p><strong>1. Pen Plotters:</strong> These use actual pens to draw on paper, moving along the X and Y axes to
-          create continuous lines. They are highly accurate and can produce large-scale designs with fine detail.</p>
-        <p><strong>2. Cutting Plotters:</strong> Instead of drawing with a pen, these plotters use a blade to cut shapes
-          out of materials such as vinyl, paper, or fabric. They are commonly used in the signage and garment industries
-          to create stickers, decals, and patterns.</p>
-        <p><strong>3. Electrostatic Plotters:</strong> These use a dry toner transfer process similar to photocopiers.
-          They are faster than pen plotters and can handle larger formats, but the quality of the images is often lower
-          than pen plotters.</p>
-      </>
-    ),
-    image: {
-      webp: '/equipment/webp/equipment-5.webp',
-      png: '/equipment/png/equipment-5.png',
-    },
-  },
-  {
     title: 'Color Printer H3-104s',
     description: 'The ColorPainter H3-104s combines high speed, excellent image quality, and advanced printing technologies, making it a robust solution to produce large-format prints.',
     miniDescription: 'High speed SX ink',
@@ -173,8 +148,8 @@ export const equipment: Equipment[] = [
       </>
     ),
     image: {
-      webp: '/equipment/webp/equipment-6.webp',
-      png: '/equipment/png/equipment-6.png',
+      webp: '/equipment/webp/equipment-5.webp',
+      png: '/equipment/png/equipment-5.png',
     },
   },
   {
@@ -204,6 +179,31 @@ export const equipment: Equipment[] = [
         <li>Smart Pass Technology (SP): Reduces banding and graininess, particularly in halftone areas, ensuring smooth
           images and high-quality output.
         </li>
+      </>
+    ),
+    image: {
+      webp: '/equipment/webp/equipment-6.webp',
+      png: '/equipment/png/equipment-6.png',
+    },
+  },
+  {
+    title: 'Plotter Machine',
+    description: 'A plotter machine is a type of printer used primarily for printing vector graphics. Unlike regular printers that print using a series of dots, plotters draw continuous lines, making them ideal for high-precision tasks such as engineering drawings, architectural plans, and detailed maps.',
+    miniDescription: 'High-precision vector graphics',
+    moreInfo: () => (
+      <>
+        <p>A plotter machine is a type of printer used primarily for printing vector graphics. Unlike regular printers
+          that print using a series of dots, plotters draw continuous lines, making them ideal for high-precision tasks
+          such as engineering drawings, architectural plans, and detailed maps.</p><br/>
+        <p>There are different types of plotters:</p><br/>
+        <p><strong>1. Pen Plotters:</strong> These use actual pens to draw on paper, moving along the X and Y axes to
+          create continuous lines. They are highly accurate and can produce large-scale designs with fine detail.</p>
+        <p><strong>2. Cutting Plotters:</strong> Instead of drawing with a pen, these plotters use a blade to cut shapes
+          out of materials such as vinyl, paper, or fabric. They are commonly used in the signage and garment industries
+          to create stickers, decals, and patterns.</p>
+        <p><strong>3. Electrostatic Plotters:</strong> These use a dry toner transfer process similar to photocopiers.
+          They are faster than pen plotters and can handle larger formats, but the quality of the images is often lower
+          than pen plotters.</p>
       </>
     ),
     image: {
@@ -243,7 +243,7 @@ export const equipment: Equipment[] = [
       webp: '/equipment/webp/equipment-8.webp',
       png: '/equipment/png/equipment-8.png',
     },
-  },
+  }
 ];
 
 export const homeAnimations = {
@@ -255,6 +255,12 @@ export const homeAnimations = {
   },
   descriptionMotion: {
     animate: { x: 0, opacity: 1, transition: { delay: HOME_DELAY_BEFORE_ANIMATION } },
+    initial: { x: -200, opacity: 0 },
+    exit: { x: 100, opacity: 0, transition: { delay: HOME_DELAY_BEFORE_ANIMATION } },
+    transition: { duration: HOME_TRANSITION_ANIMATION }
+  },
+  mobileDescriptionMotion: {
+    animate: { x: 0, opacity: 0.5, transition: { delay: HOME_DELAY_BEFORE_ANIMATION } },
     initial: { x: -200, opacity: 0 },
     exit: { x: 100, opacity: 0, transition: { delay: HOME_DELAY_BEFORE_ANIMATION } },
     transition: { duration: HOME_TRANSITION_ANIMATION }

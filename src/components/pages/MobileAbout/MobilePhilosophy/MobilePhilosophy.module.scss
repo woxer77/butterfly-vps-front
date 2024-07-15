@@ -1,0 +1,108 @@
+@import "../../../../assets/styles/scss/config-styles/vars";
+
+.mobilePhilosophy {
+  position: relative;
+
+  margin-top: 60px;
+  margin-bottom: 60px;
+
+  .title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 203%;
+    text-align: center;
+
+    margin-bottom: 20px;
+    padding: 0 $page-padding-mobile;
+  }
+
+  .description {
+    font-size: 16px;
+    opacity: 0.5;
+
+    margin-bottom: 84px;
+    padding: 0 $page-padding-mobile;
+  }
+
+  .glow {
+    height: 65%;
+    top: 350px;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 80px;
+
+    .element {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+
+      &:last-child {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      }
+
+      .point {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 15px;
+
+        z-index: 3;
+
+        .pointText {
+          font-size: 16px;
+          color: #fff;
+        }
+
+        .cross {
+          position: relative;
+
+          width: 15px;
+          height: 15px;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          transition: rotate 0.3s;
+
+          .line {
+            position: absolute;
+
+            width: 2px;
+            height: 100%;
+
+            background-color: white;
+          }
+
+          #horizLine {
+            rotate: 90deg;
+          }
+        }
+      }
+
+      .explanation {
+        padding: 12px;
+        width: 100%;
+        font-size: 12px;
+        line-height: 150%;
+        background-color: $selected-color;
+      }
+    }
+  }
+
+  .fullSizeImage {
+    width: 100%;
+    height: 160px;
+
+    @media (max-width: 380px) {
+      height: 140px;
+    }
+    @media (max-width: 340px) {
+      height: 120px;
+    }
+  }
+}

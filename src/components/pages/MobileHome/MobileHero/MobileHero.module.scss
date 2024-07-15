@@ -1,0 +1,100 @@
+@import "../../../../assets/styles/scss/config-styles/vars";
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 0.2;}
+}
+
+.hero {
+  padding: 0 $page-padding-mobile;
+  margin-top: 80px;
+
+  .butterfly {
+    width: 366px;
+    height: 239px;
+
+    margin: 0 auto;
+    margin-bottom: 40px;
+
+    opacity: 0.2;
+
+    animation: fadeIn 1s ease-in-out;
+
+    @media (max-width: 370px) {
+      width: 300px;
+      height: 200px;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+
+  .row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    .slogan {
+      font-weight: 800;
+      font-size: 34px;
+      text-transform: uppercase;
+      text-align: center;
+
+      @media (max-width: 340px) {
+        font-size: 30px;
+      }
+    }
+  }
+
+  .description {
+    font-size: 12px;
+    text-align: center;
+
+    margin-top: 20px;
+    margin-bottom: 32px;
+  }
+
+  .button {
+    width: 280px;
+    margin: 0 auto;
+
+    margin-bottom: 40px;
+  }
+
+  .socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+
+    #facebook {
+      svg path {
+        fill: $facebook-hover-color;
+      }
+    }
+    #instagram {
+      svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+    #whatsapp {
+      svg path {
+        fill: $whatsapp-hover-color;
+      }
+    }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      flex-shrink: 0;
+    }
+  }
+}

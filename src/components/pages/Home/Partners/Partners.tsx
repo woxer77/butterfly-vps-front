@@ -67,17 +67,19 @@ const Partners: React.FC = () => {
         <h1 className={`title ${styles.center} ${styles.title}`}>
           Trusted by companies across the globe
         </h1>
-        <div className={styles.shadow}/>
-        <motion.div className={styles.clientsCarousel} ref={ref} style={{ x: xTranslation }}>
-          {[...clients, ...clients].map((client, index) => (
-            <img
-              src={webp ? client.webp : client.png}
-              alt={`client-${index}`}
-              key={`client-${index}`}
-              loading="lazy"
-            />
-          ))}
-        </motion.div>
+        <div className={styles.clientsCarouselWrapper}>
+          <div className={styles.shadow}/>
+          <motion.div className={styles.clientsCarousel} ref={ref} style={{x: xTranslation}}>
+            {[...clients, ...clients].map((client, index) => (
+              <img
+                src={webp ? client.webp : client.png}
+                alt={`client-${index}`}
+                key={`client-${index}`}
+                loading="lazy"
+              />
+            ))}
+          </motion.div>
+        </div>
       </div>
     </div>
   );

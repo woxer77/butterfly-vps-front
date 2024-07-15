@@ -16,11 +16,15 @@
     position: relative;
 
     height: $aside-socials-height;
-    padding: 146px $page-padding 146px 188px+$page-padding;
+    padding: $header-height $page-padding-desktop $header-height 188px+$page-padding-desktop;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: $laptop-l-width) {
+      padding: $header-height $page-padding-laptop $header-height 188px+$page-padding-laptop;
+    }
 
     #bgObject {
       top: 0;
@@ -28,6 +32,11 @@
 
       width: 1400px;
       height: 1800px;
+
+      @media (max-width: $laptop-l-width) {
+        width: 1061px;
+        height: 1300px;
+      }
     }
 
     .glow {
@@ -54,6 +63,10 @@
         line-height: 162%;
 
         margin-bottom: 32px;
+
+        @media (max-width: $laptop-l-width) {
+          font-size: 16px;
+        }
       }
 
       .list {
@@ -105,8 +118,13 @@
       width: 736px;
       height: 478px;
       min-width: 450px;
+      margin-left: 20px;
 
       align-self: center;
+
+      /*@media (max-width: $laptop-l-width) {
+        height: 358px;
+      }*/
 
       img {
         width: 100%;
@@ -124,9 +142,13 @@
   width: 100%;
   max-width: 400px;
   position: absolute;
-  left: $aside-socials-width + $page-padding;
+  left: $aside-socials-width + $page-padding-desktop;
   top: $header-height;
 
   display: flex;
   column-gap: 15px;
+
+  @media (max-width: $laptop-l-width) {
+    left: $aside-socials-width + $page-padding-laptop;
+  }
 }

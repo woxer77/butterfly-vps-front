@@ -13,11 +13,15 @@ import { resetAll as resetAdmin } from "../../../redux/slices/adminSlice";
 import { SELECTED_COLOR } from "../../../configs/config";
 
 import styles from './Header.module.scss';
+import Burger from "../../UI/Burger/Burger";
+import MobileSideMenu from "../MobileSideMenu/MobileSideMenu";
 
 const Header: React.FC = () => {
   const admin = useAppSelector(state => state.adminReducer);
   const services = useAppSelector(state => state.userReducer.services);
   const servicesId = services.map(service => service.serviceId);
+
+  const [isMenuActive, setIsMenuActive] = React.useState(false);
 
   const { serviceId } = useParams();
 
@@ -64,12 +68,18 @@ const Header: React.FC = () => {
     }
   });
 
-  function handleLogout() {
+  const handleLogout = () => {
     mutateHook.mutate();
-  }
+  };
+
+  const openSideMenu = () => {
+    setIsMenuActive((prev) => !prev);
+  };
 
   return (
     <div className={styles.header}>
+      <Burger onClick={openSideMenu} customClassName={styles.burger} isOpen={isMenuActive}/>
+      <MobileSideMenu isMenuActive={isMenuActive} setIsMenuActive={setIsMenuActive}/>
       <nav className={styles.nav}>
         {pages.map((page) => (
           <NavLink

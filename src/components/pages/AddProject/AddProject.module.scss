@@ -20,7 +20,7 @@
   }
 
   #bgObject3 {
-    right: -$page-padding;
+    right: -$page-padding-desktop;
     bottom: -300px;
     transform: scaleX(-1);
   }
@@ -41,7 +41,7 @@
 
       width: 100%;
       //height: calc($aside-socials-height - $header-height);
-      padding: $page-padding;
+      @include page-padding;
 
       display: flex;
       align-items: center;
@@ -59,6 +59,8 @@
       }
 
       .imageWrapper {
+        width: 100%;
+        min-width: 450px;
         height: auto !important;
         border-radius: 0 !important;
         margin-left: 30px;
@@ -75,7 +77,6 @@
         }
 
         .imagePlace {
-          width: 736px !important;
           height: 478px !important;
 
           background-color: #dedede;

@@ -50,7 +50,7 @@ const Equipment: React.FC = () => {
             animate="visible"
             custom={0}
           >
-            {equipment.slice(0, -4).map((item, index) => (
+            {equipment.slice(0, 4).map((item, index) => (
               <img
                 src={webp ? item.image.webp : item.image.png}
                 alt={item.title}

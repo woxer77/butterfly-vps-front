@@ -3,15 +3,23 @@
 .feedback {
   position: relative;
 
-  padding: $page-padding * 2 $page-padding * 3;
+  padding: $page-padding-desktop * 2 $page-padding-desktop * 3;
 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
+  @media (max-width: $laptop-l-width) {
+    padding: $page-padding-laptop * 2 $page-padding-laptop * 3;
+  }
+
   #bgObject {
     bottom: -200px;
+
+    @media (max-width: $laptop-l-width) {
+      display: none;
+    }
   }
 
   .stars {

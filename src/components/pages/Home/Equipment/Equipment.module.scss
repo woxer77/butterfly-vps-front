@@ -12,6 +12,20 @@
   justify-content: space-around;
   align-items: center;
 
+  @media (max-width: $laptop-l-width) {
+    height: 700px;
+    padding: 0 80px;
+
+    justify-content: space-between;
+  }
+  @media (max-width: $mobile-width) {
+    padding: 0 $page-padding-mobile;
+    margin-top: 24px;
+    margin-bottom: 102px;
+    height: auto;
+    flex-direction: column;
+  }
+
   #bgObject {
     bottom: -300px;
     right: 0;
@@ -19,55 +33,108 @@
     width: 1220px;
     height: 870px;
 
-    @media screen and (max-width: $laptop-l-width) {
-      bottom: -100px;
+    @media (max-width: $laptop-l-width) {
+      bottom: -200px;
+      right: -50px;
 
-      width: 1000px;
-      height: 700px;
+      width: 915px;
+      height: 667px;
+    }
+    @media (max-width: $mobile-width) {
+      display: none;
     }
   }
 
   .textBlock {
     width: 650px;
     min-height: 400px;
+    flex-shrink: 0;
+
+    @media (max-width: $laptop-l-width) {
+      width: 450px;
+      //min-height: 300px;
+    }
+    @media (max-width: $mobile-width) {
+      width: 100%;
+    }
 
     .description {
       text-transform: capitalize;
+
+      @media (max-width: $mobile-width) {
+        font-size: 20px;
+        opacity: 0.5;
+      }
     }
 
     .textContent {
       min-height: 351px;
 
+      @media (max-width: $laptop-l-width) {
+        min-height: 307px;
+      }
+      @media (max-width: $mobile-width) {
+        min-height: 270px;
+      }
+      @media (max-width: 390px) {
+        min-height: 324px;
+      }
+
       .title {
         margin: 16px 0 32px 0;
+
+        @media (max-width: $mobile-width) {
+          font-weight: 600;
+          font-size: 32px;
+          letter-spacing: 0.01em;
+          text-transform: capitalize;
+        }
       }
-    }
 
-    .controls {
-      width: 120px;
-      margin-top: 40px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      .text {
+        @media (max-width: $mobile-width) {
+          font-size: 16px;
+          line-height: 175%;
+        }
+      }
     }
   }
 
   .imageWrapper {
-    width: 50%;
+    width: 100%;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
+    @media (max-width: $mobile-width) {
+      height: 200px;
+    }
+
     img {
       position: relative;
 
       width: 80%;
-      //margin-left: 200px;
       user-select: none;
 
       z-index: 5;
+
+      @media (max-width: 1250px) {
+        width: 95%;
+      }
     }
+  }
+}
+
+.controls {
+  width: 120px;
+  margin-top: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: $mobile-width) {
+    margin-top: 20px;
   }
 }

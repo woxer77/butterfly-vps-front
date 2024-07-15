@@ -3,18 +3,27 @@
 .projects {
   position: relative;
 
-  padding: 0 $page-padding;
+  padding: 0 $page-padding-desktop;
 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
+  @media (max-width: $laptop-l-width) {
+   padding: 0 $page-padding-laptop;
+  }
+
   #bgObject1 {
     right: 0;
 
     width: 450px;
     height: 600px;
+
+    @media (max-width: $laptop-l-width) {
+      width: 342px;
+      height: 456px;
+    }
   }
 
   #bgObject2 {
@@ -23,6 +32,10 @@
 
     width: 304px;
     height: 389px;
+
+    @media (max-width: $laptop-l-width) {
+      bottom: -50px;
+    }
   }
 
   .glow {
@@ -37,13 +50,18 @@
 
   .title {
     margin-bottom: 80px;
+    text-align: center;
   }
 
   .description {
-    padding: 0 $page-padding * 3;
+    padding: 0 $page-padding-desktop * 3;
 
     font-size: 20px;
     text-align: center;
+
+    @media (max-width: $laptop-l-width) {
+      padding: 0 $page-padding-laptop * 2;
+    }
   }
 
   .images {
@@ -54,6 +72,10 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 24px;
+
+    @media (max-width: $laptop-l-width) {
+     margin-top: 200px;
+    }
 
     .imageWrapper {
       position: relative;

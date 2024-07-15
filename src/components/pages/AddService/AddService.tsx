@@ -44,7 +44,7 @@ const AddService: React.FC = () => {
         <div className={styles.content}>
           <img className="bgObject" id={styles.bgObject} src={bgImage} alt="services-bg-image"/>
           <Glow customClassName={styles.glow}/>
-          <div className={styles.textBlock}>
+          <div className={`${styles.textBlock} ${adminStyles.textBlock}`}>
             <Field
               placeholder="Building Wrapping"
               name="serviceTitle"
@@ -151,12 +151,20 @@ const AddService: React.FC = () => {
         </div>
         <div className={projectsStyles.projects}>
           <Glow customClassName={projectsStyles.glow}/>
-          <img className="bgObject" id={projectsStyles.bgObject1} src={bgImageProjects1}
-               alt="services-project-bg-1"
-               loading="lazy"/>
-          <img className="bgObject" id={projectsStyles.bgObject2} src={bgImageProjects2}
-               alt="services-project-bg-2"
-               loading="lazy"/>
+          <img
+            className="bgObject"
+            id={projectsStyles.bgObject1}
+            src={bgImageProjects1}
+            alt="services-project-bg-1"
+            loading="lazy"
+          />
+          <img
+            className="bgObject"
+            id={projectsStyles.bgObject2}
+            src={bgImageProjects2}
+            alt="services-project-bg-2"
+            loading="lazy"
+          />
           <h1 className={`title ${projectsStyles.title}`}>*SERVICE TITLE*</h1>
           <Field
             placeholder="The Butterfly represents the epitome of elegance and sophistication in building wrapping, demanding not only courage but also mastery. Our establishment exudes these virtues effortlessly, boasting a team of artisans, state-of-the-art outdoor printing machinery, and top-tier materials. Irrespective of your building's size or architecture, we stand primed to elevate its branding to unprecedented levels."
@@ -166,7 +174,7 @@ const AddService: React.FC = () => {
             options={validationRulesMinMax(32, 1024)}
             label="Projects Description"
             textarea
-            customClassName={projectsStyles.projectDescription}
+            customClassName={`${projectsStyles.projectDescription} ${adminStyles.projectDescription}`}
           />
           <div className={`${projectsStyles.images} ${adminStyles.worksImages}`}>
             <p>{worksImages ? `${worksImages.length} images have been successfully added!` : 'Select up to 4 images'}</p>
