@@ -14,7 +14,6 @@ import { API_URL } from "../../../configs/config";
 import ServicesSvgSelector from "../../../assets/images/icons/services/ServicesSvgSelector";
 import SliderButton from "../../UI/SliderButton/SliderButton";
 import { ButtonTypeEnum, ButtonVariantEnum, SliderButtonTypeEnum } from "../../../ts/enums/enums";
-import "./mobileServices.scss";
 import Button from "../../UI/Button/Button";
 import { useSwipeable } from "react-swipeable";
 

@@ -5,11 +5,9 @@ import Field from "../../UI/Field/Field";
 import { starsCountOptions, validationRulesMinMax } from "../../../helpers/Form/admin";
 import ImageUpload from "../../elements/ImageUpload/ImageUpload";
 import ServicesSvgSelector from "../../../assets/images/icons/services/ServicesSvgSelector";
-import projectsStyles from "../Services/Projects/Projects.module.scss";
 import Button from "../../UI/Button/Button";
 import { ButtonTypeEnum, ButtonVariantEnum } from "../../../ts/enums/enums";
 import { useAddServiceForm } from "../../../hooks/AddService/useAddServiceForm";
-import "./mobileServices.scss";
 
 const MobileAddService: React.FC = () => {
   const {
