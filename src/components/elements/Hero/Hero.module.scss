@@ -15,5 +15,12 @@
     @media (max-width: $laptop-l-width) {
       width: calc(100% - $page-padding-laptop - $aside-socials-width);
     }
+
+    @media (max-width: $tablet-width) {
+      width: 100%;
+      position: relative;
+      left: auto;
+      top: auto;
+    }
   }
 }

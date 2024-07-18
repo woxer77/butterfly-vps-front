@@ -1,7 +1,6 @@
 import React from 'react';
 
 import ServicesSvgSelector from "../../../assets/images/icons/services/ServicesSvgSelector";
-import Hero from "../../elements/Hero/Hero";
 import Field from "../../UI/Field/Field";
 import Glow from "../../UI/Glow/Glow";
 import Button from "../../UI/Button/Button";
@@ -41,7 +40,7 @@ const AddService: React.FC = () => {
   return (
     <div className={styles.services}>
       <form onSubmit={handleSubmit(onSubmit)} className={adminStyles.form}>
-        <div className={styles.content}>
+        <div className={`${styles.content} ${adminStyles.adminContent}`}>
           <img className="bgObject" id={styles.bgObject} src={bgImage} alt="services-bg-image"/>
           <Glow customClassName={styles.glow}/>
           <div className={`${styles.textBlock} ${adminStyles.textBlock}`}>

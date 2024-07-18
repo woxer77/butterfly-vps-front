@@ -74,11 +74,19 @@ body, input, textarea, select, button, option {
   @media (max-width: $laptop-l-width) {
     font-size: 48px;
   }
+
+  @media (max-width: $tablet-width) {
+    font-size: 40px;
+  }
 }
 
 .smallerTitle {
   font-weight: 700;
   font-size: 46px;
+
+  @media (max-width: $tablet-width) {
+    font-size: 40px;
+  }
 }
 
 .text {

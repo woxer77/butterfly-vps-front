@@ -14,6 +14,12 @@
     padding: $page-padding-laptop * 2 $page-padding-laptop * 3;
   }
 
+  @media (max-width: $tablet-width) {
+    margin-top: 100px;
+    margin-bottom: 120px;
+    padding: $page-padding-laptop $page-padding-laptop;
+  }
+
   #bgObject {
     bottom: -200px;
 
@@ -41,5 +47,10 @@
   .text {
     font-size: 32px;
     text-align: center;
+
+    @media (max-width: $tablet-width) {
+      font-size: 20px;
+      text-align: center;
+    }
   }
 }

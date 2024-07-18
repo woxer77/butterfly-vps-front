@@ -20,7 +20,7 @@
   max-height: 200px;
   resize: vertical;
 
-  @media (max-width: $laptop-width) {
+  @media (max-width: $tablet-width) {
     min-height: 200px !important;
     max-height: 300px !important;
   }
@@ -30,6 +30,11 @@
   width: 800px;
   max-height: 300px;
   resize: vertical;
+
+  @media (max-width: $tablet-width) {
+    width: 100%;
+    max-width: 600px;
+  }
 }
 
 .images {
@@ -50,6 +55,13 @@
 
 .textBlock {
   width: 50%;
+
+  @media (max-width: $tablet-width) {
+    width: 100%;
+    max-width: 600px;
+
+    margin-bottom: 20px;
+  }
 }
 
 .worksImages {
@@ -87,6 +99,10 @@
 
 .feedback {
   padding-bottom: 30px !important;
+
+  @media (max-width: $tablet-width) {
+    margin-bottom: 0 !important;
+  }
 }
 
 .form {
@@ -95,6 +111,11 @@
 
 .fieldFullWidth {
   width: 800px;
+
+  @media (max-width: $tablet-width) {
+    width: 100%;
+    max-width: 600px;
+  }
 }
 
 .selectImage {
@@ -102,6 +123,11 @@
   border-radius: 0 !important;
   margin-left: 30px;
   position: relative;
+
+  @media (max-width: $tablet-width) {
+    max-width: 600px;
+    margin-left: 0 !important;
+  }
 
   p {
     width: 100%;
@@ -118,6 +144,10 @@
 
     background-color: #dedede;
     border-radius: 20px;
+
+    @media (max-width: $tablet-width) {
+      height: 320px !important;
+    }
 
     img {
       width: 100%;
@@ -137,4 +167,15 @@
 .addServiceButton {
   width: 800px;
   margin: 0 auto;
+
+  @media (max-width: $tablet-width) {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+.adminContent {
+  @media (max-width: $tablet-width) {
+    flex-direction: column;
+  }
 }

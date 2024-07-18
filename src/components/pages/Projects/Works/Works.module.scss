@@ -7,14 +7,21 @@
   flex-wrap: wrap;
   column-gap: 40px;
   row-gap: 100px;
+  margin-bottom: 75px;
 
   @media (max-width: $laptop-l-width) {
     padding: 0 $page-padding-laptop $page-padding-laptop $page-padding-laptop;
   }
 
+  @media (max-width: $tablet-width) {
+    margin-top: 300px;
+    row-gap: 40px;
+  }
+
   @media (max-width: $mobile-width) {
-    padding: 0 $page-padding-mobile $page-padding-mobile $page-padding-mobile;
+    padding: 0 $page-padding-mobile $page-padding-mobile*3 $page-padding-mobile;
     row-gap: 30px;
+    margin-top: 0;
   }
 
   .WIPwrapper {
@@ -22,7 +29,7 @@
     margin-top: -300px;
     width: 100%;
 
-    @media (max-width: $mobile-width) {
+    @media (max-width: $tablet-width) {
       margin-top: 0;
     }
   }
@@ -31,7 +38,11 @@
     //height: 540px;
     flex-basis: calc(100% / 3 - 40px);
 
-    @media (max-width: $mobile-width) {
+    @media (max-width: $laptop-l-width) {
+      flex-basis: calc(100% / 2 - 20px);
+    }
+
+    @media (max-width: 824px) {
       flex-basis: 100%;
     }
 
@@ -42,6 +53,14 @@
 
       border-radius: 12px;
       overflow: hidden;
+
+      @media (max-width: $laptop-l-width) {
+        height: 400px;
+      }
+
+      @media (max-width: $tablet-width) {
+        height: 350px;
+      }
 
       @media (max-width: $mobile-width) {
         height: 300px;

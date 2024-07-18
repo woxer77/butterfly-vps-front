@@ -11,6 +11,8 @@ import { CAROUSEL_FAST_DURATION } from "../../../../configs/config";
 import { useAppSelector } from "../../../../hooks/common/redux";
 
 import styles from './Partners.module.scss';
+import Button from "../../../UI/Button/Button";
+import { ButtonTypeEnum, ButtonVariantEnum } from "../../../../ts/enums/enums";
 
 const Partners: React.FC = () => {
   const webp = useAppSelector((state) => state.userReducer.webp);
@@ -41,7 +43,7 @@ const Partners: React.FC = () => {
     <div className={styles.partners}>
       <div className={styles.partnerships}>
         <img src={bgImage} alt="bg-rectangles-and-dots" className="bgObject" id={styles.bgObject} loading="lazy"/>
-        <h1 className={`title ${styles.center}`}>
+        <h1 className={`title ${styles.center} ${styles.firstTitle}`}>
           Powerful Partnerships
         </h1>
         <div className={styles.content}>
@@ -56,6 +58,16 @@ const Partners: React.FC = () => {
               <p className={styles.exploreBtnText}>Explore More</p>
               <HomeSvgSelector iconId="arrow" className={styles.arrow}/>
             </Link>
+            <Button
+              variant={ButtonVariantEnum.Filled}
+              type={ButtonTypeEnum.Button}
+              to="https://eprojectgallery.com/"
+              target="_blank"
+              customClassNameLink={styles.tabletButtonLink}
+              customClassName={styles.tabletButton}
+            >
+              Explore More
+            </Button>
           </div>
           <div className={styles.right}>
             <p className={styles.bigText}>Art in your hand</p>

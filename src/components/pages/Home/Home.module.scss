@@ -17,6 +17,10 @@
       align-items: center;
     }
 
+    @media (max-width: $tablet-width) {
+      margin-bottom: 120px;
+    }
+
     .butterfly {
       position: relative;
       width: 62%;
@@ -62,12 +66,18 @@
         width: 870px;
         height: 210px;
       }
+      @media (max-width: 905px) {
+        width: 760px;
+      }
 
       #crafting {
         top: 60px;
 
         @media (max-width: $laptop-l-width) {
           top: 0;
+        }
+        @media (max-width: 905px) {
+          left: 20px;
         }
       }
 
@@ -77,6 +87,9 @@
         @media (max-width: $laptop-l-width) {
           top: 0;
           left: 240px;
+        }
+        @media (max-width: 905px) {
+          left: 220px;
         }
       }
 
@@ -88,6 +101,9 @@
           top: 0;
           left: 675px;
         }
+        @media (max-width: 905px) {
+          left: 580px;
+        }
       }
 
       #building {
@@ -96,6 +112,9 @@
         @media (max-width: $laptop-l-width) {
           top: 0;
           left: 450px;
+        }
+        @media (max-width: 905px) {
+          left: 395px;
         }
       }
 
@@ -115,6 +134,9 @@
           left: 50%;
           transform: translateX(-50%);
         }
+        @media (max-width: $tablet-width) {
+          top: 160px;
+        }
       }
 
       .bigText {
@@ -126,6 +148,9 @@
         @media (max-width: $laptop-l-width) {
           font-size: 48px;
         }
+        @media (max-width: 905px) {
+          font-size: 40px;
+        }
       }
 
       .smallText {
@@ -136,6 +161,9 @@
 
         @media (max-width: $laptop-l-width) {
           font-size: 48px;
+        }
+        @media (max-width: 905px) {
+          font-size: 40px;
         }
       }
 
@@ -154,6 +182,9 @@
           text-align: center;
           font-size: 16px;
           top: 0;
+        }
+        @media (max-width: $tablet-width) {
+          padding: 0 $page-padding-mobile;
         }
       }
     }

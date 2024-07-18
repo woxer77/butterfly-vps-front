@@ -17,6 +17,11 @@
       width: 637px;
       height: 171px;
     }
+
+    @media (max-width: $tablet-width) {
+      top: -225px;
+      left: 85%;
+    }
   }
 
   #bgObject2 {
@@ -30,6 +35,11 @@
 
     @media (max-width: 1200px) {
       left: -50px;
+    }
+
+    @media (max-width: $tablet-width) {
+      top: -100px;
+      left: -150px;
     }
   }
 
@@ -117,6 +127,12 @@
 
   @media (max-width: $laptop-l-width) {
     left: $page-padding-laptop + $aside-socials-width;
+  }
+
+  @media (max-width: $tablet-width) {
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 

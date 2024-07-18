@@ -24,6 +24,14 @@
       width: 342px;
       height: 456px;
     }
+
+    @media (max-width: $tablet-width) {
+      top: 200px;
+      right: -75px;
+
+      width: 260px;
+      height: 340px;
+    }
   }
 
   #bgObject2 {
@@ -35,6 +43,12 @@
 
     @media (max-width: $laptop-l-width) {
       bottom: -50px;
+    }
+
+    @media (max-width: $tablet-width) {
+      width: 260px;
+      height: 332px;
+      left: -50px;
     }
   }
 

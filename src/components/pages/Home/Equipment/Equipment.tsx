@@ -6,7 +6,11 @@ import SliderButton from "../../../UI/SliderButton/SliderButton";
 
 import { SliderButtonTypeEnum } from "../../../../ts/enums/enums";
 import { equipment, homeAnimations } from "../../../../configs/equipment";
-import { HOME_DELAY_BEFORE_ANIMATION, HOME_TRANSITION_ANIMATION, MOBILE_WIDTH } from "../../../../configs/config";
+import {
+  HOME_DELAY_BEFORE_ANIMATION,
+  HOME_TRANSITION_ANIMATION,
+  TABLET_WIDTH
+} from "../../../../configs/config";
 import { useAppSelector } from "../../../../hooks/common/redux";
 
 import styles from './Equipment.module.scss';
@@ -17,7 +21,7 @@ const Equipment: React.FC = () => {
 
   const [position, setPosition] = React.useState<number>(0);
   const [isDisabled, setIsDisabled] = React.useState<boolean>(false);
-  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= MOBILE_WIDTH);
+  const [isTablet, setIsTablet] = React.useState(window.innerWidth <= TABLET_WIDTH);
 
   const bgImage = webp ? "/home/webp/bg-rectangles-and-dots-2.webp" : "/home/png/bg-rectangles-and-dots-2.png";
 
@@ -44,7 +48,7 @@ const Equipment: React.FC = () => {
 
   React.useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= MOBILE_WIDTH);
+      setIsTablet(window.innerWidth <= TABLET_WIDTH);
     };
 
     window.addEventListener('resize', handleResize);
@@ -80,10 +84,10 @@ const Equipment: React.FC = () => {
               {equipment[position].title}
             </motion.h2>
             <motion.p
-              animate={!isMobile ? homeAnimations.descriptionMotion.animate : homeAnimations.mobileDescriptionMotion.animate}
-              initial={!isMobile ? homeAnimations.descriptionMotion.initial : homeAnimations.mobileDescriptionMotion.initial}
-              exit={!isMobile ? homeAnimations.descriptionMotion.exit : homeAnimations.mobileDescriptionMotion.exit}
-              transition={!isMobile ? homeAnimations.descriptionMotion.transition : homeAnimations.mobileDescriptionMotion.transition}
+              animate={!isTablet ? homeAnimations.descriptionMotion.animate : homeAnimations.mobileDescriptionMotion.animate}
+              initial={!isTablet ? homeAnimations.descriptionMotion.initial : homeAnimations.mobileDescriptionMotion.initial}
+              exit={!isTablet ? homeAnimations.descriptionMotion.exit : homeAnimations.mobileDescriptionMotion.exit}
+              transition={!isTablet ? homeAnimations.descriptionMotion.transition : homeAnimations.mobileDescriptionMotion.transition}
               key={`equipment-description-${position}`}
               className={`text ${styles.text}`}
             >
@@ -91,7 +95,7 @@ const Equipment: React.FC = () => {
             </motion.p>
           </AnimatePresence>
         </div>
-        {!isMobile && (
+        {!isTablet && (
           <div className={styles.controls}>
             <SliderButton
               onClick={prevSlide}
@@ -122,7 +126,7 @@ const Equipment: React.FC = () => {
           />
         </motion.div>
       </AnimatePresence>
-      {isMobile && (
+      {isTablet && (
         <div className={styles.controls}>
           <SliderButton
             onClick={prevSlide}

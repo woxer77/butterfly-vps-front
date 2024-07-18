@@ -8,6 +8,8 @@ import { useAppSelector } from "../../../hooks/common/redux";
 import { fromSlug } from "../../../helpers/Form/admin";
 
 import styles from './MobileSideMenu.module.scss';
+import { FACEBOOK_LINK, INSTAGRAM_LINK, WHATSAPP_LINK } from "../../../configs/config";
+import GlobalSvgSelector from "../../../assets/images/icons/global/GlobalSvgSelector";
 
 interface SideMenuProps {
   isMenuActive: boolean;
@@ -89,7 +91,24 @@ const MobileSideMenu: React.FC<SideMenuProps> = ({ isMenuActive, setIsMenuActive
             {pages[3].name}
           </Link>
         </div>
+        <div className={styles.socials}>
+          <p className={styles.text}>
+            You can reach us here
+          </p>
+          <div className={styles.icons}>
+            <Link to={FACEBOOK_LINK} target="_blank" className={`${styles.icon} socialIcon`}>
+              <GlobalSvgSelector iconId="facebook" id="facebook"/>
+            </Link>
+            <Link to={INSTAGRAM_LINK} target="_blank" className={`${styles.icon} socialIcon`}>
+              <GlobalSvgSelector iconId="instagram" id="instagram"/>
+            </Link>
+            <Link to={WHATSAPP_LINK} target="_blank" className={`${styles.icon} socialIcon`}>
+              <GlobalSvgSelector iconId="whatsapp" id="whatsapp"/>
+            </Link>
+          </div>
+        </div>
       </nav>
+
     </div>
   );
 };

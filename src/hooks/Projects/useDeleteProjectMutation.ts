@@ -7,7 +7,7 @@ import { handleReload } from "../../helpers/refreshPage";
 
 export const useDeleteProjectMutation = () => {
   const [selectedProject, setSelectedProject] = React.useState<string>('');
-  console.log(selectedProject);
+
   const mutation = useMutation({
     mutationKey: ['deleteProject', selectedProject],
     mutationFn: (defaultProject: string) => deleteProjectFn(selectedProject || defaultProject),

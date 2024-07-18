@@ -35,6 +35,10 @@
       width: 300px;
       max-width: 330px;
 
+      @media (max-width: $tablet-width) {
+        width: auto;
+      }
+
       .iconBorder {
         width: 50px;
         min-width: 50px;
@@ -63,7 +67,7 @@
 .stepAdmin {
   width: 400px !important;
 
-  @media (max-width: $laptop-width) {
+  @media (max-width: $tablet-width) {
     width: 200px !important;
   }
 }

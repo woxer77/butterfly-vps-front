@@ -11,13 +11,13 @@
   overflow: hidden;
 
   backdrop-filter: blur(60px);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(153, 153, 153, 0.05) 100%);
 
   z-index: 10;
 
   transition: opacity 0.3s, visibility 0.5s, left 0.5s;
 
-  @media (max-width: $mobile-width) {
+  @media (max-width: $tablet-width) {
     display: block;
   }
 
@@ -28,6 +28,13 @@
 
     overflow-y: auto;
     scrollbar-width: none;
+
+    @media (max-width: $tablet-width) {
+      height: calc(100% - $nav-margin-top * 2.5);
+    }
+    @media (max-width: $mobile-width) {
+      height: calc(100% - $nav-margin-top * 2);
+    }
 
     &::-webkit-scrollbar {
       display: none;
@@ -51,6 +58,39 @@
 
         &:hover {
           color: $selected-color;
+        }
+      }
+    }
+    .socials {
+      display: none;
+
+      @media (max-width: $tablet-width) {
+        position: absolute;
+        bottom: 10px;
+        left: 40px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      @media (max-width: $mobile-width) {
+        display: none;
+      }
+
+      .text {
+        font-size: 24px;
+        line-height: 133%;
+        margin-right: 40px;
+      }
+
+      .icons {
+        display: flex;
+        column-gap: 20px;
+
+        .icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
       }
     }

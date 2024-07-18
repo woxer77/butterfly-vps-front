@@ -17,6 +17,10 @@
     height: 980px;
   }
 
+  @media (max-width: $tablet-width) {
+    height: 800px;
+  }
+
   .about {
     position: relative;
 
@@ -43,6 +47,14 @@
         width: 490px;
         right: 200px;
         padding: 45px;
+      }
+
+      @media (max-width: $tablet-width) {
+        width: 490px;
+        top: 130px;
+        right: 30px;
+        padding: 45px;
+        row-gap: 30px;
       }
 
       .title {

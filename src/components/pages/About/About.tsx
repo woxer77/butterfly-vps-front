@@ -12,13 +12,30 @@ import { locationInfo } from "../../../configs/locations";
 import { createVariants } from "../../../helpers/animations";
 
 import styles from './About.module.scss';
+import { TABLET_WIDTH } from "../../../configs/config";
+import MobilePhilosophy from "../MobileAbout/MobilePhilosophy/MobilePhilosophy";
+import Glow from "../../UI/Glow/Glow";
 
 const About: React.FC = () => {
   const variants = createVariants(0.3, 1.25);
+  const [isTablet, setIsTablet] = React.useState(window.innerWidth <= TABLET_WIDTH);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsTablet(window.innerWidth <= TABLET_WIDTH);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <div className={styles.about}>
       <Hero>
+        <Glow customClassName={styles.tabletGlow}/>
         <h1 className={`smallerTitle ${styles.title}`}>About The Company</h1>
         <p className={styles.description}>
           Learn more about the company and the team behind it.
@@ -52,11 +69,11 @@ const About: React.FC = () => {
               variants={variants}
               initial="hidden"
               animate="visible"
-              custom={3}></motion.iframe>
+              custom={isTablet ? 0 : 3}></motion.iframe>
           </div>
         </div>
       </Hero>
-      <Philosophy/>
+      {isTablet ? <MobilePhilosophy/> : <Philosophy/>}
       <Contact/>
       <Footer/>
     </div>

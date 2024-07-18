@@ -12,6 +12,10 @@
 
   margin-top: -$aside-socials-height;
 
+  @media (max-width: $tablet-width) {
+    margin-top: 0;
+  }
+
   .content {
     position: relative;
 
@@ -24,6 +28,13 @@
 
     @media (max-width: $laptop-l-width) {
       padding: $header-height $page-padding-laptop $header-height 188px+$page-padding-laptop;
+    }
+
+    @media (max-width: $tablet-width) {
+      padding: $page-padding-laptop;
+      height: auto;
+      padding-top: 100px;
+      margin-bottom: 100px;
     }
 
     #bgObject {
@@ -47,6 +58,10 @@
       max-width: 800px;
 
       animation: fadeIn 0.5s ease-in-out;
+
+      @media (max-width: $tablet-width) {
+        display: none;
+      }
     }
 
     .textBlock {
@@ -122,9 +137,9 @@
 
       align-self: center;
 
-      /*@media (max-width: $laptop-l-width) {
-        height: 358px;
-      }*/
+      @media (max-width: $tablet-width) {
+        height: 320px;
+      }
 
       img {
         width: 100%;
@@ -150,5 +165,11 @@
 
   @media (max-width: $laptop-l-width) {
     left: $aside-socials-width + $page-padding-laptop;
+  }
+
+  @media (max-width: $tablet-width) {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

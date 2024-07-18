@@ -28,3 +28,4 @@ export const FILE_TYPE_IMAGE: string = 'image.*';
 export const SIDE_MENU_WIDTH: number = 340;
 
 export const MOBILE_WIDTH: number = 430;
+export const TABLET_WIDTH: number = 1024;

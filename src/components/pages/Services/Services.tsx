@@ -3,7 +3,6 @@ import React from 'react';
 import { AnimatePresence, motion } from "framer-motion";
 
 import ServicesSvgSelector from "../../../assets/images/icons/services/ServicesSvgSelector";
-import Hero from "../../elements/Hero/Hero";
 import Steps from "./Steps/Steps";
 import Projects from "./Projects/Projects";
 import Feedback from "./Feedback/Feedback";

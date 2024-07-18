@@ -23,7 +23,7 @@ const Philosophy: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <Glow/>
+      <Glow customClassName={styles.glow}/>
       <div className={styles.philosophy}>
         <img className="bgObject" id={styles.bgObject} src={bgObjectSrc} alt="bg image philosophy"/>
         <div className={styles.textContent}>
