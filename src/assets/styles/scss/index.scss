@@ -12,7 +12,6 @@ body, input, textarea, select, button, option {
 }
 
 #root {
-  position: relative;
   overflow: hidden; // If need to use 'position: sticky' - set 'overflow: clip'
   color: $default-text-color;
   font-weight: $default-font-weight;

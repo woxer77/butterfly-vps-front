@@ -182,8 +182,8 @@ export const equipment: Equipment[] = [
       </>
     ),
     image: {
-      webp: '/equipment/webp/equipment-6.webp',
-      png: '/equipment/png/equipment-6.png',
+      webp: '/equipment/webp/equipment-8.webp',
+      png: '/equipment/png/equipment-8.png',
     },
   },
   {
@@ -240,8 +240,8 @@ export const equipment: Equipment[] = [
       </>
     ),
     image: {
-      webp: '/equipment/webp/equipment-8.webp',
-      png: '/equipment/png/equipment-8.png',
+      webp: '/equipment/webp/equipment-6.webp',
+      png: '/equipment/png/equipment-6.png',
     },
   }
 ];
