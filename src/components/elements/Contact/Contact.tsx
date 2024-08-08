@@ -15,11 +15,20 @@ import { validationRulesMinMax } from "../../../helpers/Form/admin";
 import styles from './Contact.module.scss';
 
 const Contact: React.FC = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm({ mode: "onChange" });
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({ mode: "onChange" });
 
   const mutation = useMutation({
     mutationKey: ['sendMail'],
-    mutationFn: (data: IMailSender) => sendMail(data)
+    mutationFn: (data: IMailSender) => sendMail(data),
+    onSuccess: () => {
+      alert('Mail sent successfully!');
+      reset();
+    },
+    onError: (err) => {
+      alert('Mail sending failed!');
+      console.log(err);
+      reset();
+    }
   });
 
   const onSubmit = (formData: FieldValues) => {
