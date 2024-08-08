@@ -2,19 +2,19 @@ export const locationInfo = [
   {
     title: 'Email',
     description: 'Our friendly team is here to help.',
-    text: 'www.butterflyae.com',
+    text: 'info@butterflyae.com',
     iconId: 'mail'
   },
   {
     title: 'Office',
     description: 'Come say hello at our office.',
-    text: '32 26th St - Al Quoz - Al Quoz Industrial Area 4 - Dubai - United Arab Emirates',
+    text: 'Al Goze Warehouses 2, Warehouse No.8, 26th Street Al Qouz Industrial Area4, Dubai',
     iconId: 'location'
   },
   {
     title: 'Phone',
     description: 'Mon-Fri from 8am to 5pm.',
-    text: '+971-58-608-5997',
+    text: '058-608-5995',
     iconId: 'phone'
   }
 ];

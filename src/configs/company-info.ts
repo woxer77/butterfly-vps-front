@@ -1,14 +1,14 @@
 export const companyInfo = [
   {
-    number: '20x',
-    name: 'Faster Updates'
+    number: '500+',
+    name: 'Projects'
   },
   {
-    number: '1000+',
+    number: '30+',
     name: 'Employees'
   },
   {
-    number: '80%',
-    name: 'FasterLoad'
+    number: '100+',
+    name: 'Happy Clients'
   }
 ];

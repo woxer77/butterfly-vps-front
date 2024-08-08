@@ -17,8 +17,8 @@ export const SERVICES_TRANSITION_ANIMATION: number = 0.2;
 export const SERVICES_DELAY_BEFORE_ANIMATION: number = 0.1;
 export const PROJECTS_TRANSITION_ANIMATION: number = 0.4;
 
-export const EMAIL: string = 'example@business.com';
-export const PHONE_NUMBER: string = '+971-58-608-5997';
+export const EMAIL: string = 'info@butterflyae.com';
+export const PHONE_NUMBER: string = '058-608-5995';
 
 export const API_URL: string = DEVELOPMENT_STAGE === 'production' ? 'http://157.173.220.166/api' : 'http://localhost:2000/api';
 
